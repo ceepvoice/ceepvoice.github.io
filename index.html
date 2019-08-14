@@ -1,0 +1,60 @@
+<html>
+<!-- nonsalt.org -->
+<!-- nullsalt.org -->
+<head>
+	<title>NullShell &#128298;</title>
+	<link rel="stylesheet" type="text/css" href="main.css"/><!-- css chính của trang web -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!-- font awesome -->
+	<script type="text/javascript" src="main.js"></script> <!-- Js chính của trang web -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js"></script><!-- JS lấy tên trình duyệt và hệ điều hành của người dùng "https://ceepvoice.github.io/broswer.js" -->
+</head>
+<body>
+
+	<div class="header"><!-- Đây là phần bắt đầu header của trang web -->
+		<div class="client_info"> <!-- Thông tin người dùng đang truy cập vào trang web -->
+			<span id='time'></span>
+			<span id='broswer'></span><br/>
+			<span id='internet_type'></span>
+			<span id='internet_downlink'></span>
+			<span id='internet_rtt'></span>
+			<span id='internet_downlinkMax'></span>
+			<span id="internet_effectiveType"></span>
+			<span id="internet_saveData"></span>
+			<span id='internet_connect'>&#9943;</span>
+		</div>
+		<img src="image/nullsalt.jpg"/><!-- Logo của trang web -->
+		<div class="karma"><!-- Lời tâm sự của thằng coder với những ai có ý định ăn cắp -->
+			<span id='coder'>Code with &#128555;&#128164; by <red>#S.a.L.t</red> [ &#128104; ]</span><!-- Ai là người đã code trang web này -->
+			<span id='remind'>Don't let me scold you for your ignorance. Respect my effort and knowledge</span><!-- Nhắc nhở đến những tên trộm -->
+		</div>
+	</div><!-- Kết thúc phần header -->
+
+		<!-- =================================== -->
+
+	<div class="main"><!-- Đây là phần bắt đầu hiển thị chính của trang web -->
+		<div class="container"> <!-- Khung container nơi chứa các thể loại được nhắc đến trong trang web bao gồm :
+			1. Kali Linux   8. Python
+			2. Termux		9. CEH
+			3. Windows		10. Tools
+			4. Android		11. Blogger
+			6. Ebook
+			7. Course -->
+			<div class="category">
+				21123123
+			</div>
+		</div>
+	</div><!-- Kết thúc phần hiển thị chính-->
+
+		<!-- =================================== -->
+
+	<div class="footer"><!-- Bắt đầu footer -->
+		Copyright &#9426; by @muoi<br/><a href="https://m.me/cn.muoi"><i class="fab fa-facebook-messenger">/cn.muoi</i></a>
+	</div><!-- Kết thúc footer -->
+
+<script type="text/javascript">
+	window.onload= clientTime();
+	window.onload= document.getElementById('broswer').innerHTML = platform.name +' '+ platform.version + " | " + platform.os; // In thông tin trình duyệt người dùng
+	internetInfo();
+</script>
+</body>
+</html> 

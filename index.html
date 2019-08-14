@@ -3,6 +3,9 @@
 <!-- nullsalt.org -->
 <head>
 	<title>NullShell &#128298;</title>
+	<!-- GHI IP CỦA CLIENT -->
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script><!-- Jquery -->
+	<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
 	<link rel="stylesheet" type="text/css" href="main.css"/><!-- css chính của trang web -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!-- font awesome -->
 	<script type="text/javascript" src="main.js"></script> <!-- Js chính của trang web -->
@@ -12,15 +15,16 @@
 
 	<div class="header"><!-- Đây là phần bắt đầu header của trang web -->
 		<div class="client_info"> <!-- Thông tin người dùng đang truy cập vào trang web -->
-			<span id='time'></span>
-			<span id='broswer'></span><br/>
-			<span id='internet_type'></span>
-			<span id='internet_downlink'></span>
-			<span id='internet_rtt'></span>
-			<span id='internet_downlinkMax'></span>
-			<span id="internet_effectiveType"></span>
-			<span id="internet_saveData"></span>
-			<span id='internet_connect'>&#9943;</span>
+			<span class="space"><span id='time'></span></span>
+			<span class="space"><span id='broswer'></span></span><br/>
+			<span class="space"><span id='internet_type'></span></span>
+			<span class="space"><span id='internet_downlink'></span></span>
+			<span class="space"><span id='internet_rtt'></span></span>
+			<span class="space"><span id='internet_downlinkMax'></span></span>
+			<span class="space"><span id="internet_effectiveType"></span></span>
+			<span class="space"><span id="internet_saveData"></span></span>
+			<span class="space"><span id='internet_connect' class="fas fa-satellite-dish"></span></span>
+			<span class="space"><span id='internet_ip'></span></span>
 		</div>
 		<img src="image/nullsalt.jpg"/><!-- Logo của trang web -->
 		<div class="karma"><!-- Lời tâm sự của thằng coder với những ai có ý định ăn cắp -->
@@ -30,8 +34,10 @@
 	</div><!-- Kết thúc phần header -->
 
 		<!-- =================================== -->
-
 	<div class="main"><!-- Đây là phần bắt đầu hiển thị chính của trang web -->
+		<div class="sidebar">
+			123
+		</div>
 		<div class="container"> <!-- Khung container nơi chứa các thể loại được nhắc đến trong trang web bao gồm :
 			1. Kali Linux   8. Python
 			2. Termux		9. CEH
@@ -39,22 +45,51 @@
 			4. Android		11. Blogger
 			6. Ebook
 			7. Course -->
-			<div class="category">
-				21123123
+			<div class="category"> <!-- Nơi chưa các bài viết về các chủ đề của blog -->
+				<div class="category_header"> <!-- Phần đầu nơi chưa image và title và một số thứ khác của chủ đề -->
+					<div class="category_image">
+						<img src="image/category/kalilinux.png"></img>
+					</div>
+					<div class="category_title">
+						<span>Kali Linux</span>
+					</div>
+				</div>
+				<div class="category_body"><!-- Phần thân chủ đề nơi chứa một số bài post và một số chức năng mở rộng khác -->
+					<div class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+						<div class="category_post__image"> <!-- Đây là phần hiển thị ảnh -->
+							<img src="image/category/kalilinux.png"></img>
+						</div>
+						<div class="category_post__info"> <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+							<div class="category_post__title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
+		<div class="sidebar">
+			123
 		</div>
 	</div><!-- Kết thúc phần hiển thị chính-->
 
 		<!-- =================================== -->
 
 	<div class="footer"><!-- Bắt đầu footer -->
-		Copyright &#9426; by @muoi<br/><a href="https://m.me/cn.muoi"><i class="fab fa-facebook-messenger">/cn.muoi</i></a>
+		Copyright &#9426; by @muoi<br/>
+		<span>Sử dụng trình duyệt Chrome hoặc các trình duyệt nhân Chromium để được hỗ trợ đầy đủ nhất !</span>
+		<a href="https://m.me/cn.muoi"><i class="fab fa-facebook-messenger">/cn.muoi</i></a>
 	</div><!-- Kết thúc footer -->
 
 <script type="text/javascript">
+	// Hiển thị thông tin thời gian
 	window.onload= clientTime();
+	// Hiển thị thông tin trình duyệt
 	window.onload= document.getElementById('broswer').innerHTML = platform.name +' '+ platform.version + " | " + platform.os; // In thông tin trình duyệt người dùng
+	// Hiển thị thông tin client
 	internetInfo();
+	// Hiển thị địa chỉ ip
+	document.getElementById('internet_ip').innerHTML = userip ;
 </script>
 </body>
 </html> 

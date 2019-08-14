@@ -1,7 +1,7 @@
 /* BODY -- ĐÂY LÀ CHUNG CHO TẤT CẢ CÁC DIV */
 body {
 	background-color: black;
-	color: white
+	color: white;
 }
 /* HEADER */ 
 .header{
@@ -11,30 +11,52 @@ body {
 	text-align: center;
 	margin-top: 0;
 }
-.header img{
-	border-radius: 50%;
-	width: 100px;
-	height: 100px;
-	border:solid 10px;
-	border-width: 5px 15px 15px 15px;
-}
-.karma {
-	display: flex;
-	flex-direction: column;
-	padding: 5px;
-}
-.client_info {
-	flex-direction: row;
-	padding: 10px;
-}
-.client_info * {
-	margin: 2px;
-	padding-right:5px;
-	border:solid;
-	border-width: 0 2px 0 0;
-	border-color: orange;
+	/* Đoạn css này nói về cái ảnh đầu của header hay còn gọi là logo */
+	.header img{
+		border-radius: 50%;
+		width: 100px;
+		height: 100px;
+		border:solid 10px;
+		border-width: 5px 15px 15px 15px;
+	}
+	/* Đoạn css lời tâm sự của thằng coder với những thằng trộm-er */
+	.karma {
+		display: flex;
+		flex-direction: column;
+		padding: 5px;
+	}
+	/* Đoạn css viết về những thông tin của người dùng đầu trang như ngày tháng giờ, trình duyệt, os , internet */
+	.client_info {
+		flex-direction: row;
+		padding: 10px;
+	}
+	.space span:last-child {
+  		border-right: none;
+	}
+	.space span:first-child {
+  		border-left: none;
+	}
+	.space { /* Cái này áp dụng cho tất cả các thẻ nằm trong class client_info */
+		margin:0;
+		padding-right:5px;
+		padding-left: 5px;
+		border:solid 1px;
+		border-top:none;
+		border-bottom: none;
+		border-color: orange;
+	}
+	.internet_connect {
+		font-weight: bolder;
+	}
+	.warningFlash {
+	  animation: warningFlash 1s linear infinite;
+	}
 
-}
+	@keyframes warningFlash {
+	  50% {
+	    opacity: 0;
+	  }
+	}
 
 /* MAIN */ 
 .main {
@@ -42,8 +64,12 @@ body {
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 .container {
+	width: 90%;
   list-style: none;
   display: -webkit-box;
   display: -moz-box;
@@ -61,20 +87,31 @@ body {
   display: flex;
   flex-direction: column;
 }
-.category_info {
+.category_image {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	height: 40%;
+	justify-content: center;
 }
-.category_info img {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
+.category_image img{
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
 }
+.category_title {
+	text-align: center;
+	}
 .category_post {
-	height: 60%;
+	display: table;
 }
+.category_post__image , .category_post__info {
+	vertical-align:middle;
+	display: table-cell;
+	}
+	.category_post__image img { 
+	width: 25px; 
+	height: 25px;
+	margin:5px;
+	border-radius: 50% }
 /* FOOTER */
 .footer {
 	padding-top: 20px;
@@ -95,4 +132,10 @@ red {
 	text-shadow: 0px 1px 0 green,
 				 1px 2px 0 green,
 				 2px 3px 0 green;
+}
+yellow {
+	color: yellow;
+}
+green {
+	color: green;
 }

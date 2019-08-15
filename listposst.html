@@ -1,0 +1,22 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script><!-- Jquery -->
+<div id='content'></div>
+
+
+<script type="text/javascript">
+function handleResponse(response) {
+  var post_number  = Object.keys(response.items).length; //number of posts
+  for (i=0; i<post_number; i++) {
+    $('#content').append('<div id="post' + (i+1) + '" class="post"><p></p></div>');
+    alert(response.items[23].title);
+  }
+}
+</script>
+<script src="https://www.googleapis.com/blogger/v3/blogs/3672902208348460125/posts?callback=handleResponse&key=AIzaSyD6l0knzX0Muw_YnhAlwcUSvLyxrqte_Og"></script>
+
+https://www.googleapis.com/blogger/v3/blogs/3672902208348460125/posts?maxResults=10&key=AIzaSyD6l0knzX0Muw_YnhAlwcUSvLyxrqte_Og&pageToken=CgkIChjhjofPmi0Q3aju-pOjsfwy
+
+<script style="text/javascript">
+function showpostcount(json) {
+document.write('<left>Tổng số bài viết: <b>' + parseInt(json.feed.openSearch$totalResults.$t,10)
++ '</b></center>');}</script>
+<script src="https:eitvietnam.blogspot.com/feeds/posts/default?alt=json-in-script&callback=showpostcount"></script>

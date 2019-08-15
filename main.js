@@ -39,33 +39,38 @@ function internetInfo() {
   document.getElementById('internet_type').innerHTML = navigator.connection.type;
   document.getElementById('internet_downlinkMax').innerHTML=navigator.connection.downlinkMax + 'Mb/s';
   document.getElementById('internet_effectiveType').innerHTML=navigator.connection.effectiveType;
-  document.getElementById('internet_saveData').innerHTML= 'SD :'+navigator.connection.saveData;
+  
+  // Xanh nếu save data vàng nếu không save data
+  if (navigator.connection.saveData == false) {
+  	document.getElementById('internet_saveData').innerHTML= '<yellow>'+navigator.connection.saveData+'</yellow>';
+  } else {
+  	document.getElementById('internet_saveData').innerHTML= '<green>'+navigator.connection.saveData+'</green>';
+  };
   // Vàng và nhấp nháy vàng nếu kết nối dưới 0.5 Mb và xanh nếu kết nối > 1 Mb 
   if (navigator.connection.downlink <= 0.5) {
   	document.getElementById('internet_downlink').innerHTML= '<yellow>'+navigator.connection.downlink + 'Mb/s</yellow>';
- 	$("#internet_downlink").addClass("warningFlash");
-} else if ( navigator.connection.downlink >= 1 ) {
+  	$("#internet_downlink").addClass("warningFlash");
+  } else if ( navigator.connection.downlink >= 1 ) {
   	document.getElementById('internet_downlink').innerHTML= '<green>'+navigator.connection.downlink + 'Mb/s</green>';
   	$("#internet_downlink").removeClass("warningFlash");
-} else {
-	document.getElementById('internet_downlink').innerHTML= navigator.connection.rtt;
-	$("#internet_downlink").removeClass("warningFlash");
-};
+  } else {
+  	document.getElementById('internet_downlink').innerHTML= navigator.connection.rtt;
+  	$("#internet_downlink").removeClass("warningFlash");
+  };
   // Đỏ và nhấp nháy nếu rtt dưới 100ms 
-  if (navigator.connection.rtt >= 100) {
+  if (navigator.connection.rtt > 100) {
   	document.getElementById('internet_rtt').innerHTML= '<red>'+navigator.connection.rtt + 'ms</red>';
- 	$("#internet_rtt").addClass("warningFlash");
-} else {
+  	$("#internet_rtt").addClass("warningFlash");
+  } else {
   	document.getElementById('internet_rtt').innerHTML= navigator.connection.rtt + 'ms';
   	$("#internet_rtt").removeClass("warningFlash");
-};
+  };
   // Đỏ và nhấp nháy biểu tượng internet nếu mất kết nối
   if (navigator.onLine) {
   	document.getElementById('internet_connect').style.color = 'green';
- 	$("#internet_connect").removeClass("warningFlash");
-} else {
+  	$("#internet_connect").removeClass("warningFlash");
+  } else {
   	document.getElementById('internet_connect').style.color = 'red';
   	$("#internet_connect").addClass("warningFlash");
-}
+  }
 };
-	

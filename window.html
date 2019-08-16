@@ -1,4 +1,4 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!-- font awesome -->
 <style type="text/css">
 	.container {
 		
@@ -45,6 +45,9 @@
 	.app:hover .image {
 		background-color: white;
 	}
+	.image {
+		background-color: white;
+	}
 		.image , .name { /* Đoạn css cho post title và post img */
 			vertical-align:middle;
 			display: table-cell;
@@ -63,6 +66,7 @@
 		}
 		.startName {
 			padding-left: 10px;
+			font-weight: bolder;
 		}
 		.startName::after {
 			content: '.'
@@ -76,6 +80,8 @@
     	width: 50vw;
     	resize: both;
     	overflow: auto;
+    	border-radius: 5px;
+    	background-color: #ebe4e4;
 }
 
 
@@ -91,40 +97,51 @@ label {
     padding: 10px 0 10px 50px;
 }
 #menu1 {
-	 position: fixed;
-  bottom: 20px;
- 
-  width: 44px;
-  height: 44px;
-  background: white;
-  border-radius: 0.25em;
-  box-shadow: 0 0 10px rgba(232, 74, 100, 0.4);
-  z-index: 2;
-}
+	position: fixed;  
+    width:100%;
+    bottom:0;
+    left:0;
 
+}
+i {
+	background-color: #004172;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 5px;
+	font-size: 35px;
+	color: green;
+	margin-bottom: 50px;
+}
+i:hover {
+	opacity: 0.5;
+}
 .tabs::-webkit-scrollbar {
   display: none
 
 }
-.tabs:active::-webkit-scrollbar {
+.tabs:hover::-webkit-scrollbar {
 	display: block;
  width: 10px;
- background:red;
+
 }
 /* Track */
 .tabs::-webkit-scrollbar-track {
   background: #f1f1f1; 
+
 }
 
 /* Handle */
 .tabs::-webkit-scrollbar-thumb {
   background: #888; 
+  border-radius: 15px;
 }
 
 /* Handle on hover */
 .tabs::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
 </style>
 
 	<input type="checkbox" value="Bike" id='menu'>
@@ -138,136 +155,6 @@ label {
 		</div>
 		<span class="startName">C</span>
 		<div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div>
-<div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
-			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
-		</div><div class="app"> 
 			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
 			<span class="name">Color</span>
 		</div>
@@ -323,7 +210,9 @@ label {
 
 </div>
 
-<label for="menu" id='menu1'>Menu</label>
+<label for="menu" id='menu1'>
+	<i class="fab fa-windows"></i>
+</label>
 <!-- <span>JS Loader</span>
 		<span></span>
 		<span></span>

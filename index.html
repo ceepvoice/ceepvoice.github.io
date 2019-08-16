@@ -14,19 +14,53 @@
 <body>
 
 	<div class="header"><!-- Đây là phần bắt đầu header của trang web -->
-		<div class="client_info"> <!-- Thông tin người dùng đang truy cập vào trang web -->
-			<span class="space"><span id='time'></span></span>
-			<span class="space"><span id='broswer'></span></span><br/>
-			<span class="space"><span id='internet_type'></span></span>
-			<span class="space"><span id='internet_downlink'></span></span>
-			<span class="space"><span id='internet_rtt'></span></span>
-			<span class="space"><span id='internet_downlinkMax'></span></span>
-			<span class="space"><span id="internet_effectiveType"></span></span>
-			<span class="space">sd: <span id="internet_saveData"></span></span>
-			<span class="space"><span id='internet_connect' class="fas fa-satellite-dish"></span></span>
-			<span class="space"><span id='internet_ip'></span></span>
+		<input type="checkbox" id='menu_header'></input>
+		<label for="menu_header">
+				<span id='time'></span>
+		</label>
+		<div class="tabs">
+			<div class="app">
+				<img class='image' src='https://img.icons8.com/pastel-glyph/2x/internet.png'></img>
+				<span class="title">Broswer: <span id='broswer'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='http://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/preferences-system-power-icon.png'></img>
+				<span class="title">System: <span id='osSystem'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/method-1-972898.png'></img>
+				<span class="title">Type: <span id='internet_type'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/internet-speed-1415870-1195781.png'></img>
+				<span class="title">DownLink: <span id='internet_downlink'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn0.iconfinder.com/data/icons/pixon-1/24/Link_hyperlink-128.png'></img>
+				<span class="title">RTT: <span id='internet_rtt'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/free/png-256/3ds-max-599475.png'></img>
+				<span class="title">MaxDownLink: <span id='internet_downlinkMax'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/free/png-256/mode-vibrate-vibration-mobile-wave-alert-interface-2514.png'></img>
+				<span class="title">EffectiveType: <span id="internet_effectiveType"></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://img.icons8.com/cotton/2x/save.png'></img>
+				<span class="title">SaveData: <span id="internet_saveData"></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://lh3.googleusercontent.com/Oj4ulml5jl23mKXMYEg1giVxXbi-sAeYsKq2d8INkVUahM6HRWTEEXY3AX-pGmzhBPUG=s85'></img>
+				<span class="title">Status: <span id='internet_connect'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://freeiconshop.com/wp-content/uploads/edd/location-map-flat.png'></img>
+				<span class="title">IpAddress: <span id='internet_ip'></span></span>
+			</div>
 		</div>
-		<img src="image/nullsalt.jpg"/><!-- Logo của trang web -->
+		<img class='header_logo' src="image/nullsalt.jpg"/><!-- Logo của trang web -->
 		<div class="karma"><!-- Lời tâm sự của thằng coder với những ai có ý định ăn cắp -->
 			<span id='coder'>Code with &#128555;&#128164; by <red>#S.a.L.t</red> [ &#128104; ]</span><!-- Ai là người đã code trang web này -->
 			<span id='remind'>Don't let me scold you for your ignorance. Respect my effort and knowledge</span><!-- Nhắc nhở đến những tên trộm -->
@@ -57,45 +91,17 @@
 				<ul class="category_body"><!-- Phần thân chủ đề nơi chứa một số bài post và một số chức năng mở rộng khác -->
 					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
 					 <!-- Đây là phần hiển thị ảnh -->
-							<img class="category_post__image" src="image/category/kalilinux.png"></img>
+							<img class="image" src="image/category/kalilinux.png"></img>
 						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-							<span class="category_post__title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+							<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
 								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
 							</span>
 					</li>
 					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
 					 <!-- Đây là phần hiển thị ảnh -->
-							<img class="category_post__image" src="image/category/kalilinux.png"></img>
+							<img class="image" src="image/category/kalilinux.png"></img>
 						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-							<span class="category_post__title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-							</span>
-					</li>
-				</ul>
-			</div>
-			<div class="category"> <!-- Nơi chưa các bài viết về các chủ đề của blog -->
-				<div class="category_header"> <!-- Phần đầu nơi chưa image và title và một số thứ khác của chủ đề -->
-					<div class="category_image">
-						<img src="image/category/kalilinux.png"></img>
-					</div>
-					<div class="category_title">
-						<span>Kali Linux</span>
-					</div>
-				</div>
-				<ul class="category_body"><!-- Phần thân chủ đề nơi chứa một số bài post và một số chức năng mở rộng khác -->
-					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-					 <!-- Đây là phần hiển thị ảnh -->
-							<img class="category_post__image" src="image/category/kalilinux.png"></img>
-						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-							<span class="category_post__title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-							</span>
-					</li>
-					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-					 <!-- Đây là phần hiển thị ảnh -->
-							<img class="category_post__image" src="image/category/kalilinux.png"></img>
-						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-							<span class="category_post__title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+							<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
 								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
 							</span>
 					</li>
@@ -113,17 +119,45 @@
 				<ul class="category_body"><!-- Phần thân chủ đề nơi chứa một số bài post và một số chức năng mở rộng khác -->
 					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
 					 <!-- Đây là phần hiển thị ảnh -->
-							<img class="category_post__image" src="image/category/kalilinux.png"></img>
+							<img class="image" src="image/category/kalilinux.png"></img>
 						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-							<span class="category_post__title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+							<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
 								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
 							</span>
 					</li>
 					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
 					 <!-- Đây là phần hiển thị ảnh -->
-							<img class="category_post__image" src="image/category/kalilinux.png"></img>
+							<img class="image" src="image/category/kalilinux.png"></img>
 						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-							<span class="category_post__title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+							<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+							</span>
+					</li>
+				</ul>
+			</div>
+			<div class="category"> <!-- Nơi chưa các bài viết về các chủ đề của blog -->
+				<div class="category_header"> <!-- Phần đầu nơi chưa image và title và một số thứ khác của chủ đề -->
+					<div class="category_image">
+						<img src="image/category/kalilinux.png"></img>
+					</div>
+					<div class="category_title">
+						<span>Kali Linux</span>
+					</div>
+				</div>
+				<ul class="category_body"><!-- Phần thân chủ đề nơi chứa một số bài post và một số chức năng mở rộng khác -->
+					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+					 <!-- Đây là phần hiển thị ảnh -->
+							<img class="image" src="image/category/kalilinux.png"></img>
+						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+							<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+							</span>
+					</li>
+					<li class="category_post"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+					 <!-- Đây là phần hiển thị ảnh -->
+							<img class="image" src="image/category/kalilinux.png"></img>
+						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+							<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
 								Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
 							</span>
 					</li>
@@ -134,24 +168,35 @@
 			123
 		</div>
 	</div><!-- Kết thúc phần hiển thị chính-->
-
 		<!-- =================================== -->
-
+	<div class="bottomMenu"><!-- bắt đầu phần hiển thị menu giống window 10 -->
+		123
+	</div>
+		<!-- =================================== -->
 	<div class="footer"><!-- Bắt đầu footer -->
 		Copyright &#9426; by @muoi<br/>
 		<span>Sử dụng trình duyệt Chrome hoặc các trình duyệt nhân Chromium để được hỗ trợ đầy đủ nhất !</span>
 		<a href="https://m.me/cn.muoi"><i class="fab fa-facebook-messenger">/cn.muoi</i></a>
+		<div id='logging'></div>
 	</div><!-- Kết thúc footer -->
 
 <script type="text/javascript">
-	// Hiển thị thông tin thời gian
-	window.onload= clientTime();
-	// Hiển thị thông tin trình duyệt
-	window.onload= document.getElementById('broswer').innerHTML = platform.name +' '+ platform.version + " on " + platform.os; // In thông tin trình duyệt người dùng
-	// Hiển thị thông tin client
-	internetInfo();
-	// Hiển thị địa chỉ ip
-	document.getElementById('internet_ip').innerHTML = userip ;
+	
+	window.onload= function(){ 
+		// Hiển thị thông tin thời gian
+		clientTime();
+		// Hiển thị thông tin trình duyệt
+		document.getElementById('broswer').innerHTML = platform.name +' '+ platform.version; // In thông tin trình duyệt người dùng
+		document.getElementById('osSystem').innerHTML = platform.os;
+		colorBorder();
+		// Hiển thị thông tin internet kết nối client
+		internetInfo();
+	};
+	// Gọi hàm check lỗi
+	checkError();
+	// Địa chỉ ip
+	$('#internet_ip').html(userip);
+	userColor();
 </script>
 </body>
 </html> 

@@ -1,0 +1,204 @@
+<style type="text/css">
+	.container {
+		
+		display: none;
+	}
+	.tabs {
+		width: 20vw;
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	span {
+		text-align: left;
+		background-color: inherit;
+		  color: black;
+	
+		  width: 100%;
+
+	
+		  text-align: left;
+		  cursor: pointer;
+		  transition: 0.3s;
+		  font-size: 17px;
+	}
+	.right {
+		width: 80%;
+	}
+	.dash {
+		border:solid 1px;
+	}
+	.app { /* Đoạn css cho các post hiển thị trên chủ đề */
+		display: table;
+		margin: 5px;
+		height: 25px;
+		border-spacing: 5px 5px;
+	}
+	.app:hover  {
+		background-color: #9e8a8a;
+		border-radius: 15px;
+	}
+	.app:hover .image {
+		background-color: white;
+	}
+		.image , .name { /* Đoạn css cho post title và post img */
+			vertical-align:middle;
+			display: table-cell;
+		}
+			.app img { 
+				width: 25px; 
+				height: 25px;
+				margin-right:5px;
+				border-style:solid;
+				border-width: 2px;
+				padding: 2px;
+				border-radius: 50%;
+			}
+		.name { 
+			padding-left: 5px;
+		}
+		.startName {
+			padding-left: 10px;
+		}
+		.startName::after {
+			content: '.'
+		}
+		/* demo */
+		input:checked ~ .container{
+			display: flex;
+		flex-direction: row;
+		border:solid 1px;
+		height: 80%;
+    	width: 50vw;
+    	resize: both;
+    	overflow: auto;
+}
+
+
+input#menu {
+    display: none;
+}
+label {
+
+    font-size: 56px;
+    display: block;
+    cursor: pointer;
+
+    padding: 10px 0 10px 50px;
+}
+#menu1 {
+	 position: fixed;
+  bottom: 20px;
+ 
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 0.25em;
+  box-shadow: 0 0 10px rgba(232, 74, 100, 0.4);
+  z-index: 2;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none
+
+}
+.tabs:hover::-webkit-scrollbar {
+	display: block;
+ width: 10px;
+ background:red;
+}
+/* Track */
+.tabs::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+.tabs::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+.tabs::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+</style>
+
+	<input type="checkbox" value="Bike" id='menu'>
+	
+<div class="container">
+	<div class="tabs">	
+		<span class="startName">A</span>
+		<div class="app"> 
+			<img class="image" src='https://cdn0.iconfinder.com/data/icons/mintab-outline-for-ios-4/30/alarm-clock-timer-time-ring-512.png'></img>
+			<span class="name">Alarm</span>
+		</div>
+		<span class="startName">C</span>
+		<div class="app"> 
+			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
+			<span class="name">Color</span>
+		</div>
+		<div class="app"> 
+			<img class="image" src='https://cdn1.iconfinder.com/data/icons/business-and-finance-2-5/130/99-512.png'></img>
+			<span class="name">Collaboration</span>
+		</div>
+		<div class="app"> 
+			<img class="image" src='https://cdn1.iconfinder.com/data/icons/network-and-comminications-flat-circle-shadow-vo-1/120/control__data__share__community__social__communication__connect-512.png'></img>
+			<span class="name">Community</span>
+		</div>
+		<span class="startName">D</span>
+		<div class="app"> 
+			<img class="image" src='https://cdn4.iconfinder.com/data/icons/game-design-flat-icons-2/512/4_magnet_resource_game_design_flat_icon-512.png'></img>
+			<span class="name">Data Saving Mode</span>
+		</div>
+		<span class="startName">F</span>
+		<div class="app"> 
+			<img class="image" src='https://icon-library.net/images/feedback-icon-vector/feedback-icon-vector-10.jpg'></img>
+			<span class="name">Feedback</span>
+		</div>
+		<div class="app"> 
+			<img class="image" src='https://icon-library.net/images/file-explorer-icon/file-explorer-icon-14.jpg'></img>
+			<span class="name">File Explore</span>
+		</div>
+		<span class="startName">L</span>
+		<div class="app"> 
+			<img class="image" src='https://cdn3.iconfinder.com/data/icons/cosmo-color-documents-2/40/log-512.png'></img>
+			<span class="name">Log</span>
+		</div>
+		<span class="startName">M</span>
+		<div class="app"> 
+			<img class="image" src='https://cdn0.iconfinder.com/data/icons/music-audio-video-flat-square-rounded-vol-1/150/81__chevron__button__music__player-512.png'></img>
+			<span class="name">Music Player</span>
+		</div>
+		<span class="startName">P</span>
+		<div class="app"> 
+			<img class="image" src='https://cdn2.iconfinder.com/data/icons/computer-security-1/512/12-128.png'></img>
+			<span class="name">Policy</span>
+		</div>
+		<span class="startName">T</span>
+		<div class="app"> 
+			<img class="image" src='https://image.flaticon.com/icons/png/128/2008/2008862.png'></img>
+			<span class="name">Toolkits</span>
+		</div>
+
+	</div>
+	<div class="dash"></div>
+	<div class="right">
+		132
+	</div>
+	
+
+</div>
+
+<label for="menu" id='menu1'>Menu</label>
+<!-- <span>JS Loader</span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span> --> 

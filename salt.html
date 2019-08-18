@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<style type="text/css">
+body {
+	padding: 0;
+	margin:0;
+}
+	.taskbar {
+  position: fixed;
+  bottom: 0;
+  height: 43px;
+  width: 100%;
+  background: #004172;
+  padding-bottom: 5px;
+  display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+
+.taskbar_icon {
+  height: 43px;
+  width: 48px;
+  position: relative;
+}
+
+.taskbar_icons a i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 21px;
+  color: white;
+}
+.taskbar_icons a:active {
+   box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.taskbar a {
+  display: table-cell;
+  border-bottom: 2px solid transparent;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.taskbar  a:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+</style>
+<body>
+	
+	<!-- TASKBAR -->
+	 
+    <!-- MAIN -->
+
+  <div class="taskbar">
+        <div class="taskbar_icons">
+                <a class="taskbar_icon"><i class="fas fa-search"></i></a>
+                <a class="taskbar_icon"><i class="fab fa-windows"></i></a>
+                <a class="taskbar_icon"><i class="far fa-bell"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

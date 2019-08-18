@@ -1,206 +1,288 @@
-/* BODY -- ĐÂY LÀ CHUNG CHO TẤT CẢ CÁC DIV */
+/* BODY */
+
 body {
-	background-color: #ebe4e4;
-	color: black;
+  color:black;
+  padding:0;
+  margin:0;
 }
-/* HEADER */ 
-.header{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	margin-top: 0;
+
+/* WINDOW EXPLORE */
+
+
+/* HEADER */
+
+ 
+.header {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  margin-top:0;
 }
-	/* Đoạn css này nói về cái ảnh đầu của header hay còn gọi là logo */
-	.header_logo {
-		border-radius: 50%;
-		width: 100px;
-		height: 100px;
-		border:solid 10px;
-		border-width: 5px 15px 15px 15px;
-		margin-top: 20px;
-	}
-	/* Đoạn css lời tâm sự của thằng coder với những thằng trộm-er */
-	.karma {
-		display: flex;
-		flex-direction: column;
-		padding: 5px;
-	}
-	.internet_connect {
-		font-weight: bolder;
-	}
-	.warningFlash { /* Cả đoạn css này dùng cho tạo kiểu nhấp nháy thông báo */
-	  animation: warningFlash 1.5s linear infinite;
-	}
 
-	@keyframes warningFlash {
-	  50% {
-	    opacity: 0;
-	  }
-	}
+/* MAIN */
 
-/* MAIN */ 
+ 
 .main {
-	width: 80%;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:50px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:40px;
+  margin-bottom:80px;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-around;
 }
-	.container { /* Đoạn css cho container nơi chứa toàn bộ category */
-		width: 90%;
-		list-style: none;
-		display: -webkit-box;
-		display: -moz-box;
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-flex-flow: row wrap;
-		justify-content: space-around;
-	}
-		.category { /* Đoạn css chứa các chủ đề và bài viết */
-			padding:5px;
- 		 	width: 300px;
- 		 	margin-top: 10px;
- 		 	color: white;
- 	 		display: flex;
-  			flex-direction: column;
-		}
-			.category_image { /* Đoạn css logo chủ đề category */
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-				.category_image img{ /* CSS cho img của chủ đề */
-					width: 100px;
-					height: 100px;
-					object-fit: contain;
-					border-style:solid;
-					border-color: yellow;
-					border-width: 5px;
-					border-radius: 50%;
-				}
-			.category_title { /* Tiêu đề của chủ đề */
-				text-align: center;
-				font-size: 25px;
-				text-decoration-line: underline;
-				padding-top: 5px;
-			}
-		.category_body { 
-			list-style-type: none;
-			margin: 0;
-		    padding: 0;
-		}
-			.category_body li {
-				border-bottom: 1px solid #555;
-				padding-bottom: 5px;
-				padding-top: 5px;
-			}
-			.category_body li:last-child {
-				border-bottom: none;
-			}
-			.category_post , .app{ /* Đoạn css cho các post hiển thị trên chủ đề */
-				display: table;
-			}
-			.app {
-				border-spacing: 2px;
-				
-			}
-			.app:hover  {
-				background-color: #9e8a8a;
-				border-radius: 15px;
-			}
-			.app:hover .image {
-				background-color: white;
-			}
-			.header .tabs {
-					display: none;
-			}
-			.tabs .title {
-				font-weight: bolder;
-				
-			}
-			.header input {
-				display: none;
-			}
 
-			.header input:checked ~ .tabs {
-				display: flex;
-				flex-direction: column;
-				background-color: white;
-				border-radius: 5px;
-				padding: 5px;
-				position:absolute;
-				margin-top: 50px;
-				z-index: 2;
-				text-align: left;
-			}
-			.tabs span {
-				text-align: left;
-				width: 100%;
-			}
-			#time{
-				background-color: green; 
-				border-radius: 5px;
-				padding: 5px;
+.main_container {
+  /* Đoạn css cho container nơi chứa toàn bộ category */
 
-			}
-				.image , .title { /* Đoạn css cho post title và post img */
+	width:95%;
+  list-style:none;
+  display:-webkit-box;
+  display:-moz-box;
+  display:-ms-flexbox;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-flex-flow:row wrap;
+  justify-content:space-around;
+}
+
+.category {
+  /* Đoạn css chứa các chủ đề và bài viết */
+
+	padding:5px;
+  width:350px;
+  margin-top:10px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  border-radius:5px;
+}
+
+.category_image {
+  /* Đoạn css logo chủ đề category */
+
+				display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.category_image img {
+  /* CSS cho img của chủ đề */
+
+				width:100px;
+  height:100px;
+  object-fit:contain;
+  border-style:solid;
+  border-color:yellow;
+  border-width:5px;
+  border-radius:50%;
+}
+
+.category_title {
+  /* Tiêu đề của chủ đề */
+
+				text-align:center;
+  font-size:25px;
+  text-decoration-line:underline;
+  padding-top:5px;
+}
+
+.category_body {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+.category_body li {
+  border-bottom:1px solid #555;
+  padding-bottom:5px;
+  padding-top:5px;
+}
+
+.category_body li:last-child {
+  border-bottom:none;
+}
+
+.box {
+  /* Đoạn css cho các post hiển thị trên chủ đề */
+
+				display:table;
+}
+
+.box {
+  border-spacing:2px;
+}
+
+#headerApp {
+  margin-top:5px;
+  left:5px;
+  border-radius:5px;
+  z-index:2;
+  position:fixed;
+  background-color:#004172;
+  color:white;
+}
+
+#headerApp .title {
+  font-weight:bolder;
+}
+
+.image,
+.title {
+  /* Đoạn css cho post title và post img */
+
 					vertical-align:middle;
-					display: table-cell;
-				}
-				.header .title {
-					padding-left: 5px;
-				}
-					.category_post img { 
-						width: 25px; 
-						height: 25px;
-						margin:5px;
-						border-radius: 50%;
-						border-style:solid;
-						
-						border-width: 5px;
-					}
-					.app img {
-						width: 25px;
-						height: 25px;
-						border-radius: 50%;
-						border:solid 2px;
-						padding:2px;
-					}
+  display:table-cell;
+}
 
-/* MENU BOOTOM GIỐNG WIN10 */
-.bottomMenu {
-			margin-left: 5px;
-			margin-bottom: 5px;
-			position:fixed;
-		}
+.header .title {
+  padding-left:5px;
+}
+
+.box img {
+  width:25px;
+  height:25px;
+  margin:5px;
+  border-radius:50%;
+  border-style:solid;
+  border-width:5px;
+}
+
+/* MENU BOOTOM GIỐNG WIN10 TASKBAR */
+
+	.taskbar {
+  position:fixed;
+  bottom:0;
+  height:43px;
+  width:100%;
+  background:#004172;
+  padding-bottom:5px;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+
+.taskbar_icon {
+  height:43px;
+  width:48px;
+  position:relative;
+}
+
+.taskbar_icons a i {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:21px;
+  color:white;
+}
+
+.taskbar_icons a:hover  i {
+  font-size:30px;
+}
+
+.taskbar_icons a:active {
+  box-shadow:0 5px #666;
+  transform:translateY(4px);
+}
+
+.taskbar a {
+  display:table-cell;
+  border-bottom:2px solid transparent;
+  padding-left:25px;
+  padding-right:25px;
+}
+
+.taskbar  a:hover {
+  background-color:rgba(255,255,255,0.1) !important;
+}
+
 /* FOOTER */
-.footer {
-	padding-top: 20px;
-	margin-top:50px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	border:solid;
-	border-width: 1px 0 0 0 ;
-	width: 50%;
-	margin-bottom: 50px;
-}
+
 /* TAG COLOR */
+
 red {
-	color: red;
+  color:red;
 }
+
 #coder red {
-	text-shadow: 0px 1px 0 green,
-				 1px 2px 0 green,
-				 2px 3px 0 green;
+  text-shadow:0 1px 0 green,1px 2px 0 green,2px 3px 0 green;
 }
+
 yellow {
-	color: yellow;
+  color:yellow;
 }
+
 green {
-	color: green;
+  color:green;
+}
+
+/* 
+<input type="checkbox" id='menu_header'></input>
+		
+			
+			
+
+		<div class="tabs">
+			<div class="app">
+				<img class='image' src='https://img.icons8.com/pastel-glyph/2x/internet.png'></img>
+				<span class="title">Broswer:<span id='broswer'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='http://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/preferences-system-power-icon.png'></img>
+				<span class="title">System:<span id='osSystem'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/method-1-972898.png'></img>
+				<span class="title">Type:<span id='internet_type'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/internet-speed-1415870-1195781.png'></img>
+				<span class="title">DownLink:<span id='internet_downlink'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn0.iconfinder.com/data/icons/pixon-1/24/Link_hyperlink-128.png'></img>
+				<span class="title">RTT:<span id='internet_rtt'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/free/png-256/3ds-max-599475.png'></img>
+				<span class="title">MaxDownLink:<span id='internet_downlinkMax'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://cdn.iconscout.com/icon/free/png-256/mode-vibrate-vibration-mobile-wave-alert-interface-2514.png'></img>
+				<span class="title">EffectiveType:<span id="internet_effectiveType"></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://img.icons8.com/cotton/2x/save.png'></img>
+				<span class="title">SaveData:<span id="internet_saveData"></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://lh3.googleusercontent.com/Oj4ulml5jl23mKXMYEg1giVxXbi-sAeYsKq2d8INkVUahM6HRWTEEXY3AX-pGmzhBPUG=s85'></img>
+				<span class="title">Status:<span id='internet_connect'></span></span>
+			</div>
+			<div class="app">
+				<img class='image' src='https://freeiconshop.com/wp-content/uploads/edd/location-map-flat.png'></img>
+				<span class="title">IpAddress:<span id='internet_ip'></span></span>
+			</div>
+	
+	</div>
+
+	*/
+
+	.internet_connect {
+  font-weight:bolder;
+}
+
+.warningFlash {
+  /* Cả đoạn css này dùng cho tạo kiểu nhấp nháy thông báo */
+
+	  animation:warningFlash 1.5s linear infinite;
+}
+
+@keyframes warningFlash {
+  50% {
+    opacity:0;
+  }
 }

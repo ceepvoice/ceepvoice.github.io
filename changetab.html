@@ -1,0 +1,23 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<style>
+.box {
+width:100;
+height:25px;
+position: absolute;
+}
+
+</style>
+<div>
+    <div class="box" style='background-color:red;'></div>
+    <div class="box" style='background-color:black;left:25px'></div>
+    <div class="box" style='background-color:green;left:50px'></div>
+</div>
+<script>
+$('.box').click(function() {
+   // set ohters element to the initial level
+   $(this).siblings('.box').css('z-index', 0);
+   // set clicked element to a higher level
+   $(this).css('z-index', 11);
+});
+</script>

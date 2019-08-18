@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<style>
+.window_taskbar {
+  display:inline-grid;
+  padding-top:2px;
+  width:100%;
+  grid-template-columns:auto auto;
+  background-color:#a89d9d;
+  height: auto;
+}
+
+
+
+.window_logo a i {
+  padding-top:5px;
+}
+
+.window {
+  background-color:#e3d5d5;
+  resize:both;
+  overflow:hidden;
+}
+.window_container {
+  margin:5px;
+  background-color:#fff;
+  padding: 5px;
+  height: auto;
+}
+.window_logo {
+  height:30px;
+  display:flex;
+  justify-content:space-around;
+  justify-content:flex-end;
+}
+
+.window_logo a {
+  width:15px;
+  height:15px;
+  font-size:10px;
+  color:#fff;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:15px;
+  padding-right:15px;
+}
+
+.window_logo a:active {
+  window-shadow:0 5px #666;
+  transform:translateY(2px);
+}
+
+.window_logo a:hover {
+  background-color:#fff;
+  color:#000;
+}
+
+.window_logo a:last-child {
+  background-color:rgba(255,0,0,.781);
+}
+</style>
+</head>
+<div class='window'>
+    <div class='window_taskbar'>
+        <div class='window_logo' style="justify-content: flex-start;">
+          <a style="float: left;  background-image: url('http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico');background-repeat: no-repeat;
+  background-position: center;
+  background-size: 21px 21px;background-color: unset;"></a>
+        </div>
+        <div class='window_logo'>
+           <a><i class="fas fa-minus"></i></a>
+            <a><i class="far fa-window-restore"></i></a>
+            <a><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+    <div class='window_container'>
+        123
+    </div>
+</div>
+</html>

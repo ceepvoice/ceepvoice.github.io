@@ -3,7 +3,7 @@ var postNumber = 10 ; // Đây là số bài viết sẽ hiển thị ở mỗi 
 var color = ['#FF0000','#FF3300','#FFFF00','#00CC00','#009999','#00FFFF','#9900CC','#FF0099','#FF6600','#CCFF33','#660000','#CC0099','#003300']; // Đây là các màu sắc mà nó sẽ border hình ảnh cái bài viết hiển thị trên trang chủ
 
 // CÁC BIẾN THIẾT LẬP MÀU SẮC TÙY CHỈNH CHO NGƯỜI DÙNG
-var categoryColor = 'tomato'; // Màu sắc cho khung category 
+var categoryColor = '#0e540f'; // Màu sắc cho khung category 
 
 function userColor(){
 	$('.category').css ('background-color',categoryColor);
@@ -95,9 +95,7 @@ function internetInfo() {
 
 function colorBorder (){
 	for (i=0; i < (postNumber + 1 ); i++ ) { 
-	var a = '.category_post:nth-child('+(i+1)+') img';
-	var b = '.header .tabs .app:nth-child('+(i+1)+') img';
+	var a = '.box:nth-child('+(i+1)+') img';
 	$(a).css ('border-color',color[i]);
-	$(b).css ('border-color',color[i]);
 	}
 };

@@ -1,62 +1,83 @@
-<style type="text/css">
-	.app {
-		display: table;
-	}
-	.image , .text { /* Đoạn css cho post title và post img */
-			vertical-align:middle;
-			display: table-cell;
-		}
-		#menu {
-			display: 
-		}
+<!DOCTYPE html>
+<html>
+<style>
+#demo {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+ width: 25px;
+ height: 50px;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+.container {
+	overflow: hidden;
+}
 </style>
+<body>
+
+<h1>Draggable DIV Element</h1>
+
+<p>Click and hold the mouse button down while moving the DIV element</p>
+
 <div class="container">
-	<input type="checkbox" value="Bike" id='menu'>
-	<label for="menu" id='menu1'>
-		<div class="time">
-			12:00:23
-		</div>
-	</label>
-	<div class="box">
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-		<div class="app">
-			<img class="image"></img>
-			<span class="text">asdasd</span>
-		</div>
-	</div>
+
+<div id="demo">
+
+  
+		234234
+		
+
 </div>
+</div>
+<script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("demo"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+    elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script><!-- Jquery -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
 body {
@@ -17,29 +19,26 @@ body {
       user-select: none;
       
     }
+.move {
+  position: absolute; 
+
+}
+.move1 {
+    left: 50px;
+  top: 50px; }
 
   </style>
+
+
 </head>
 
 <body style="overflow-x: hidden;">
 
     <div id="container">
-      <pre>
-           
-    #item , #item2 {
-      width: 100px;
-      height: 100px;
-      background-color: rgb(245, 230, 99);
-      border: 10px solid rgba(136, 136, 136, .5);
-      border-radius: 50%;
-      touch-action: none;
-      user-select: none;
-    }
-      </pre>
-      <div id="item">
+   <div class='move move1' id="item">
 
       </div>
-       <div id="item2">
+       <div class='move move2' id="item2">
 
       </div>
     </div>
@@ -63,7 +62,6 @@ body {
     container.addEventListener("touchstart", dragStart, false);
     container.addEventListener("touchend", dragEnd, false);
     container.addEventListener("touchmove", drag, false);
-
     container.addEventListener("mousedown", dragStart, false);
     container.addEventListener("mouseup", dragEnd, false);
     container.addEventListener("mousemove", drag, false);
@@ -114,3 +112,17 @@ body {
     }
     }
   </script>
+<script>
+$('.move').click(function() {
+   // set ohters element to the initial level
+   $(this).siblings('.move').css('z-index', 0);
+   // set clicked element to a higher level
+   $(this).css('z-index', 11);
+});
+$('.move').on('mousedown mouseup', function() {
+   // set ohters element to the initial level
+   $(this).siblings('.move').css('z-index', 0);
+   // set clicked element to a higher level
+   $(this).css('z-index', 11);
+});
+</script>

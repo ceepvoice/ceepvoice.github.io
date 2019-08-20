@@ -3,15 +3,12 @@
 
 
 <script type="text/javascript">
-function handleResponse(response) {
-  var post_number  = Object.keys(response.items).length; //number of posts
-  for (i=0; i<post_number; i++) {
-    $('#content').append('<div id="post' + (i+1) + '" class="post"><p></p></div>');
-    alert(response.items[23].title);
-  }
+function getpost(response) {
+  var post_number  = (response.items).length; //number of posts
+  document.write ( response.nextPageToken)
 }
 </script>
-<script src="https://www.googleapis.com/blogger/v3/blogs/3672902208348460125/posts?callback=handleResponse&key=AIzaSyD6l0knzX0Muw_YnhAlwcUSvLyxrqte_Og"></script>
+<script src="https://www.googleapis.com/blogger/v3/blogs/3672902208348460125/posts?callback=getpost&maxResults=12&key=AIzaSyD6l0knzX0Muw_YnhAlwcUSvLyxrqte_Og"></script>
 
 https://www.googleapis.com/blogger/v3/blogs/3672902208348460125/posts?maxResults=10&key=AIzaSyD6l0knzX0Muw_YnhAlwcUSvLyxrqte_Og&pageToken=CgkIChjhjofPmi0Q3aju-pOjsfwy
 

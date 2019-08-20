@@ -5,124 +5,153 @@
 body {
   padding: 0;
   margin:0;
-
-  background-color: red;
 }
 
-    #item , #item2 {
-      width: 100px;
-      height: 100px;
-      background-color: rgb(245, 230, 99);
-      border: 10px solid rgba(136, 136, 136, .5);
-      border-radius: 50%;
-      touch-action: none;
-      user-select: none;
-      
-    }
-.move {
-  position: absolute; 
+.window_taskbar {
+  display:inline-grid;
+  padding-top:2px;
+  grid-template-columns:auto auto;
+  background-color:#a89d9d;
+  height: auto;
+}
+
+
+
+.window_logo a i {
+  padding-top:5px;
+}
+
+.window {
+  background-color:#e3d5d5;
+  display: flex;
+  flex-direction: column;
+  resize:both;
+  overflow:hidden;
+  width: 350px;
+  position: absolute;
+}
+.window_container {
+  margin:5px;
+  background-color:#fff;
+  padding: 5px;
+  height: 100%;
+  overflow: auto;
 
 }
-.move1 {
-    left: 50px;
-  top: 50px; }
+.window_logo:first-child {
+  height:30px;
+  display:flex;
+ 
+  justify-content:flex-start;
+}
+.window_logo:last-child {
+   height:30px;
+  display:flex;
+  justify-content: flex-end;
+}
+.window_logo a {
+  width:15px;
+  height:15px;
+  font-size:10px;
+  color:#fff;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:15px;
+  padding-right:15px;
+}
 
+.window_logo a:active {
+  box-shadow:0 5px #666;
+  transform:translateY(2px);
+}
+
+.window_logo a:hover {
+  background-color:#fff;
+  color:#000;
+}
+
+.window_logo a:last-child {
+  background-color:rgba(255,0,0,.781);
+}
   </style>
 
 
 </head>
 
 <body style="overflow-x: hidden;">
-
-    <div id="container">
-   <div class='move move1' id="item">
-
-      </div>
-       <div class='move move2' id="item2">
-
-      </div>
+<div class='window' id='item2'>
+    <div class='window_taskbar' id="item2move" >
+        <div class='window_logo'>
+          <a style="background-image: url('http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico');background-repeat: no-repeat;
+  background-position: center;
+  background-size: 21px 21px;background-color: unset;"></a>
+        </div>
+        <div class='window_logo'>
+           <a><i class="fas fa-minus"></i></a>
+            <a><i class="far fa-window-restore"></i></a>
+            <a><i class="fas fa-times"></i></a>
+        </div>
     </div>
+    <div class='window_container'>
+     
+    </div>
+</div>
 
 </body>
   <script>
-  move('item2');
-  move('item');
-  function move(item,container){
-    var dragItem = document.querySelector('#'+item);
-    var container = document.querySelector('body');
 
-    var active = false;
-    var currentX;
-    var currentY;
-    var initialX;
-    var initialY;
-    var xOffset = 0;
-    var yOffset = 0;
+  // HÀM DÙNG ĐỂ CÓ THẺ DI CHUYỂN CÁC CỬA SỔ TR
+dragElement(document.getElementById("item2"));
 
-    container.addEventListener("touchstart", dragStart, false);
-    container.addEventListener("touchend", dragEnd, false);
-    container.addEventListener("touchmove", drag, false);
-    container.addEventListener("mousedown", dragStart, false);
-    container.addEventListener("mouseup", dragEnd, false);
-    container.addEventListener("mousemove", drag, false);
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "move")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "move").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
 
-    function dragStart(e) {
-      if (e.type === "touchstart") {
-        initialX = e.touches[0].clientX - xOffset;
-        initialY = e.touches[0].clientY - yOffset;
-      } else {
-        initialX = e.clientX - xOffset;
-        initialY = e.clientY - yOffset;
-      }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
 
-      if (e.target === dragItem) {
-        active = true;
-      }
-    }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
 
-    function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
-
-      active = false;
-    }
-
-    function drag(e) {
-      if (active) {
-      
-        e.preventDefault();
-      
-        if (e.type === "touchmove") {
-          currentX = e.touches[0].clientX - initialX;
-          currentY = e.touches[0].clientY - initialY;
-        } else {
-          currentX = e.clientX - initialX;
-          currentY = e.clientY - initialY;
-        }
-
-        xOffset = currentX;
-        yOffset = currentY;
-
-        setTranslate(currentX, currentY, dragItem);
-      }
-    }
-
-    function setTranslate(xPos, yPos, el) {
-      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-    }
-    }
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
   </script>
 <script>
-$('.move').click(function() {
-   // set ohters element to the initial level
+// FUNCTION ĐỔI Z-INDEX
+function zIndex() {
    $(this).siblings('.move').css('z-index', 0);
-   // set clicked element to a higher level
    $(this).css('z-index', 11);
-});
-$('.move').on('mousedown mouseup', function() {
-   // set ohters element to the initial level
-   $(this).siblings('.move').css('z-index', 0);
-   // set clicked element to a higher level
-   $(this).css('z-index', 11);
-});
+ } ;
+// ĐỔI Z-INDEX KHI CLICK 
+  $('.move').click(zIndex);
+  // ĐỔI Z-INDEX KHI MOUSE HOLD
+  $('.move').on('mousedown mouseup', zIndex);
 </script>

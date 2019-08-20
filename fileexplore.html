@@ -5,10 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <style>
+
+.box {
+display:table;
+}
+.image,
+.title {
+vertical-align:middle;
+ display:table-cell;
+}
+.image {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
 .window_taskbar {
   display:inline-grid;
   padding-top:2px;
-  width:100%;
   grid-template-columns:auto auto;
   background-color:#a89d9d;
   height: auto;
@@ -26,13 +40,15 @@
   flex-direction: column;
   resize:both;
   overflow:hidden;
+  width: 350px;
 }
 .window_container {
   margin:5px;
   background-color:#fff;
   padding: 5px;
   height: 100%;
-  
+  overflow: auto;
+
 }
 .window_logo {
   height:30px;
@@ -65,6 +81,24 @@
 .window_logo a:last-child {
   background-color:rgba(255,0,0,.781);
 }
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+span:nth-child(odd) {
+  color: green;
+  font-weight: bolder;
+}
+.title::after {
+  content: ":"
+}
+span:nth-child(even){
+  margin-left: 31px;
+  padding-top:5px;
+  padding-bottom: 5px;
+
+}
 </style>
 </head>
 <div class='window'>
@@ -81,7 +115,52 @@
         </div>
     </div>
     <div class='window_container'>
-        123
+     
+      <div class="container">
+  <span><div class="box"><img class="image" src='http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico'><div class="title">Template Name</div></div></span>
+  <span>Null Down Template</span>
+   <span><div class="box"><img class="image" src='http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico'><div class="title">Version</div></div></span>
+  <span>1.0.1</span>
+   <span><div class="box"><img class="image" src='http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico'><div class="title">Coder</div></div></span>
+  <span>i.am_Salt</span>
+   <span><div class="box"><img class="image" src='http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico'><div class="title">Self Support Version</div></div></span>
+  <span>350.000 vnđ</span>
+   <span><div class="box"><img class="image" src='http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico'><div class="title">Long-Term Support Version</div></div></span>
+  <span>400. vnđ</span>
+   <span><div class="box"><img class="image" src='http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico'><div class="title">Contact</div></div></span>
+  <span><a href='https://m.me/cn.muoi' target="_blank">m.me/cn.muoi</a></span>
+</div>
     </div>
 </div>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+  var lazyloadImages = document.querySelectorAll("img.lazy");    
+  var lazyloadThrottleTimeout;
+  
+  function lazyload () {
+    if(lazyloadThrottleTimeout) {
+      clearTimeout(lazyloadThrottleTimeout);
+    }    
+    
+    lazyloadThrottleTimeout = setTimeout(function() {
+        var scrollTop = window.pageYOffset;
+        lazyloadImages.forEach(function(img) {
+            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+            }
+        });
+        if(lazyloadImages.length == 0) { 
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+    }, 20);
+  }
+  
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
+});
+</script>
 </html>

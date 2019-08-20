@@ -99,3 +99,62 @@ function colorBorder (){
 	$(a).css ('border-color',color[i]);
 	}
 };
+
+// ============== ĐOẠN CỰC KÌ QUAN TRỌNG 
+ // HÀM DÙNG ĐỂ CÓ THẺ DI CHUYỂN CÁC CỬA SỔ TR
+
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "move")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "move").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+} ;
+// FUNCTION ĐỔI Z-INDEX
+function zIndex() {
+   $(this).siblings('.window').css('z-index', 0);
+   $(this).css('z-index', 11);
+ } ;
+// CÁI NÀY CỰC KÌ QUAN TRỌNG ĐỂ GIÚP CHO HÀM MOVE CÓ THỂ HOẠT ĐỘNG ĐƯỢC
+
+function addIdToMove() {
+    var cls = document.getElementsByClassName("window"); 
+    var clc = document.getElementsByClassName("window_taskbar");
+        for (n=0, length = cls.length; n < length; n++) {
+            cls[n].id= "window" + (n + 1);
+            clc[n].id= "window" + (n+1)+"move"; 
+        } ; } ;

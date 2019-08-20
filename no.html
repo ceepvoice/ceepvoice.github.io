@@ -1,6 +1,5 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script><!-- Jquery -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <style>
 body {
   padding: 0;
@@ -106,7 +105,7 @@ function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "move")) {
     /* if present, the header is where you move the DIV from:*/
-     document.getElementById(elmnt.id + "move").addEventListener("touchstart",dragMouseDown);
+     document.getElementById(elmnt.id + "move").addEventListener("touchstart" ,dragMouseDown);
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV:*/
     elmnt.addEventListener("touchstart",dragMouseDown);
@@ -118,9 +117,9 @@ function dragElement(elmnt) {
     // get the mouse cursor position at startup:
     pos3 = e.clientX;
     pos4 = e.clientY;
-    document.addEventListener("mouseup" , closeDragElement);
+    document.addEventListener("touchend" , closeDragElement);
     // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
+    document.addEventListener("touchmove" ,elementDrag);
   }
 
   function elementDrag(e) {
@@ -138,8 +137,8 @@ function dragElement(elmnt) {
 
   function closeDragElement() {
     /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
+    document.addEventListener("touchend") = null;
+    document.addEventListener("touchmove" = null;
   }
 } ;
 </script>

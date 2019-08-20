@@ -1,64 +1,144 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script><!-- Jquery -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div>Drag me</div>
 <style>
-div {
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  text-align: center;
-  background: red;
-  color: white;
-  position: absolute;
-  left: 20px;
-  top: 20px;
-}
-
 body {
+  padding: 0;
+  margin:0;
+  background-color: red;
 }
-</style>
-<script>
-	(function($) {
-    $.fn.drags = function(opt) {
+/* WINDOWS */
+.window_taskbar {
+  display:inline-grid;
+  padding-top:2px;
+  grid-template-columns:auto auto;
+  background-color:#a89d9d;
+  height: auto;
+}
 
-        opt = $.extend({handle:"",cursor:"move"}, opt);
 
-        if(opt.handle === "") {
-            var $el = this;
-        } else {
-            var $el = this.find(opt.handle);
-        }
 
-        return $el.css('cursor', opt.cursor).on("mousedown", function(e) {
-            if(opt.handle === "") {
-                var $drag = $(this).addClass('draggable');
-            } else {
-                var $drag = $(this).addClass('active-handle').parent().addClass('draggable');
-            }
-            var z_idx = $drag.css('z-index'),
-                drg_h = $drag.outerHeight(),
-                drg_w = $drag.outerWidth(),
-                pos_y = $drag.offset().top + drg_h - e.pageY,
-                pos_x = $drag.offset().left + drg_w - e.pageX;
-            $drag.css('z-index', 1000).parents().on("mousemove", function(e) {
-                $('.draggable').offset({
-                    top:e.pageY + pos_y - drg_h,
-                    left:e.pageX + pos_x - drg_w
-                }).on("mouseup", function() {
-                    $(this).removeClass('draggable').css('z-index', z_idx);
-                });
-            });
-            e.preventDefault(); // disable selection
-        }).on("mouseup", function() {
-            if(opt.handle === "") {
-                $(this).removeClass('draggable');
-            } else {
-                $(this).removeClass('active-handle').parent().removeClass('draggable');
-            }
-        });
+.window_logo a i {
+  padding-top:5px;
+}
 
-    }
-})(jQuery);
+.window {
+  background-color:#e3d5d5;
+  display: flex;
+  flex-direction: column;
+  resize:both;
+  overflow:hidden;
+  width: 350px;
+  position: absolute;
+}
+.window_container {
+  margin:5px;
+  background-color:#fff;
+  padding: 5px;
+  height: 100%;
+  overflow: auto;
 
-$('div').drags();
+}
+.window_logo:first-child {
+  height:30px;
+  display:flex;
+ 
+  justify-content:flex-start;
+}
+.window_logo:last-child {
+   height:30px;
+  display:flex;
+  justify-content: flex-end;
+}
+.window_logo a {
+  width:15px;
+  height:15px;
+  font-size:10px;
+  color:#fff;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:15px;
+  padding-right:15px;
+}
+
+.window_logo a:active {
+  box-shadow:0 5px #666;
+  transform:translateY(2px);
+}
+
+.window_logo a:hover {
+  background-color:#fff;
+  color:#000;
+}
+
+.window_logo a:last-child {
+  background-color:rgba(255,0,0,.781);
+}
+  </style>
+
+
+</head>
+
+<body style="overflow-x: hidden;">
+
+ <div class='window' id='item'>
+    <div class='window_taskbar' id='itemmove'>
+        <div class='window_logo' style="justify-content: flex-start;">
+          <a style="background-image: url('https://img.icons8.com/bubbles/2x/admin-settings-male.png');background-repeat: no-repeat;
+  background-position: center;
+  background-size: 21px 21px;background-color: unset;"></a>
+        </div>
+        <div class='window_logo'>
+           <a><i class="fas fa-minus"></i></a>
+            <a><i class="far fa-window-restore"></i></a>
+            <a><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+    <div class='window_container'>
+     
+    </div>
+</div>
+
+</body>
+  <script>
+dragElement( document.getElementById("item"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "move")) {
+    /* if present, the header is where you move the DIV from:*/
+     document.getElementById(elmnt.id + "move").addEventListener("mousedown",dragMouseDown);
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.addEventListener("mousedown",dragMouseDown);
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.addEventListener("mouseup" , closeDragElement);
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+} ;
 </script>

@@ -1,113 +1,46 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script><!-- Jquery -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html>
 <style>
-
-body {
-  padding: 0;
-  margin:0;
-}
-
-.window_taskbar {
-  display:inline-grid;
-  padding-top:2px;
-  grid-template-columns:auto auto;
-  background-color:#a89d9d;
-  height: auto;
-}
-
-
-
-.window_logo a i {
-  padding-top:5px;
-}
-
-.window {
-  background-color:#e3d5d5;
-  display: flex;
-  flex-direction: column;
-  resize:both;
-  overflow:hidden;
-  width: 350px;
+#mydiv {
   position: absolute;
-}
-.window_container {
-  margin:5px;
-  background-color:#fff;
-  padding: 5px;
-  height: 100%;
-  overflow: auto;
-
-}
-.window_logo:first-child {
-  height:30px;
-  display:flex;
- 
-  justify-content:flex-start;
-}
-.window_logo:last-child {
-   height:30px;
-  display:flex;
-  justify-content: flex-end;
-}
-.window_logo a {
-  width:15px;
-  height:15px;
-  font-size:10px;
-  color:#fff;
-  padding-top:5px;
-  padding-bottom:5px;
-  padding-left:15px;
-  padding-right:15px;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
 }
 
-.window_logo a:active {
-  box-shadow:0 5px #666;
-  transform:translateY(2px);
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
 }
+</style>
+<body>
 
-.window_logo a:hover {
-  background-color:#fff;
-  color:#000;
-}
+<h1>Draggable DIV Element</h1>
 
-.window_logo a:last-child {
-  background-color:rgba(255,0,0,.781);
-}
-  </style>
+<p>Click and hold the mouse button down while moving the DIV element</p>
 
-
-</head>
-
-<body style="overflow-x: hidden;">
-<div class='window' id='item2'>
-    <div class='window_taskbar' id="item2move" >
-        <div class='window_logo'>
-          <a style="background-image: url('http://www.iconarchive.com/download/i98291/dakirby309/simply-styled/File-Explorer.ico');background-repeat: no-repeat;
-  background-position: center;
-  background-size: 21px 21px;background-color: unset;"></a>
-        </div>
-        <div class='window_logo'>
-           <a><i class="fas fa-minus"></i></a>
-            <a><i class="far fa-window-restore"></i></a>
-            <a><i class="fas fa-times"></i></a>
-        </div>
-    </div>
-    <div class='window_container'>
-     
-    </div>
+<div id="mydiv">
+  <div id="mydivheader">Click here to move</div>
+  <p>Move</p>
+  <p>this</p>
+  <p>DIV</p>
 </div>
 
-</body>
-  <script>
-
-  // HÀM DÙNG ĐỂ CÓ THẺ DI CHUYỂN CÁC CỬA SỔ TR
-dragElement(document.getElementById("item2"));
+<script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("mydiv"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "move")) {
+  if (document.getElementById(elmnt.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
-    document.getElementById(elmnt.id + "move").onmousedown = dragMouseDown;
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV:*/
     elmnt.onmousedown = dragMouseDown;
@@ -143,15 +76,7 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-  </script>
-<script>
-// FUNCTION ĐỔI Z-INDEX
-function zIndex() {
-   $(this).siblings('.move').css('z-index', 0);
-   $(this).css('z-index', 11);
- } ;
-// ĐỔI Z-INDEX KHI CLICK 
-  $('.move').click(zIndex);
-  // ĐỔI Z-INDEX KHI MOUSE HOLD
-  $('.move').on('mousedown mouseup', zIndex);
 </script>
+
+</body>
+</html>

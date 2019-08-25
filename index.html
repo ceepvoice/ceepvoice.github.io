@@ -2,14 +2,13 @@
 <!-- nonsalt.org -->
 <!-- nullsalt.org -->
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>NullShell &#128298;</title>
 	<!-- GHI IP CỦA CLIENT -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script><!-- Jquery -->
 	<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
-	<link rel="stylesheet" type="text/css" href="/main.css"/><!-- css chính của trang web -->
+	<link rel="stylesheet" type="text/css" href="main.css"/><!-- css chính của trang web -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!-- font awesome -->
-	<script type="text/javascript" src="/main.js"></script> <!-- Js chính của trang web -->
+	<script type="text/javascript" src="main.js"></script> <!-- Js chính của trang web -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js"></script><!-- JS lấy tên trình duyệt và hệ điều hành của người dùng "https://ceepvoice.github.io/broswer.js" -->
 </head>
 <body>
@@ -19,7 +18,7 @@
 		<!-- CLOCK -->
 		<div class="box time">
 			<img class='image' src='https://img.icons8.com/cotton/2x/clock--v1.png'/>
-			<span id='time' class="title"></span>
+			<span id='time1' class="title"></span>
 		</div>
 	</div>
 
@@ -80,7 +79,7 @@
     </div>
 </div>
 
-<div class='window'>
+<div class='window'  style="height: 200px;">
     <div class='window_taskbar'>
         <div class='window_logo' style="justify-content: flex-start;">
           <a style="background-image: url('https://img.icons8.com/bubbles/2x/admin-settings-male.png');background-repeat: no-repeat;
@@ -94,7 +93,46 @@
         </div>
     </div>
     <div class='window_container'>
-     
+     	<div class="flip_container">
+     	  <div class="flip_container-inner">
+     	    <div class="flip_container-front">
+     	      <div class="version_container">
+     	                  <div id='fa-check' class="fas fa-check"></div>
+     	                  <div class="version">1.1.0SLT</div>
+     	                  <span>Bạn đang sử dụng phiên bản mới nhất</span>
+     	              </div>
+     	    </div>
+     	    <div class="flip_container-back">
+     	      <div class="version_more">
+     	    <div class="box"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+						<!-- Đây là phần hiển thị ảnh -->
+						<img class="image" src="image/category/kalilinux.png"></img>
+						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+						<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+							Hướng dẫn sử dụng
+						</span>
+					</div>
+<div class="box"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+						<!-- Đây là phần hiển thị ảnh -->
+						<img class="image" src="image/category/kalilinux.png"></img>
+						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+						<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+							Hướng dẫn sử dụng
+						</span>
+					</div><div class="box"> <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+						<!-- Đây là phần hiển thị ảnh -->
+						<img class="image" src="image/category/kalilinux.png"></img>
+						<!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+						<span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+							Hướng dẫn sử dụng
+						</span>
+					</div>
+     	</div>
+     	    </div>
+     	  </div>
+     	</div>
+     	
+     	
     </div>
 </div>
 
@@ -127,7 +165,6 @@
 
 	addIdToMove();
 
-
 	$('.window').each ( 
 		function(){
 			dragElement( document.getElementById( $(this).attr('id') ) );
@@ -138,6 +175,8 @@
   	$('.window').click(zIndex);
   	// ĐỔI Z-INDEX KHI MOUSE HOLD
   	$('.window').on('mousedown mouseup', zIndex);
+
+  	
 </script>
 </body>
 </html> 

@@ -1,0 +1,26 @@
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<style type="text/css">
+	.demo {
+		width:50px;
+		height: 50px;
+		background-color: green;
+		resize: both;
+		overflow: auto;
+	}
+</style>
+
+
+    <div class="row">
+        <div class="twelve columns itemDetails"> 
+            <h3><a href="#">title</a></h3>
+            <p class="quiet" style="font-size: 5px;">submitted by <a href="#">designer</a></p>                   
+        </div>
+    </div>
+</div>
+<p class="demo">ấd ac ac ac <br/>ác</p>
+<script type="text/javascript">
+var widthArray=$('.row *').map(function(){
+   alert( $(this).css('font-size'));
+}).get();
+</script>

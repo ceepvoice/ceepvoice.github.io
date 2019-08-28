@@ -1,0 +1,32 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<style>
+	p { border: solid;
+	width: 150px
+	;
+	height: 150px }
+
+</style>
+<p contenteditable="true" id="demo"><span class="search_letter">Hey ! I am Saltana</span></p>
+<script>
+$("#demo").one("click",  function() { $("#demo").empty() });
+$("#demo").on("keydown",  function() { $("#rm").css("display","none") });
+$("#demo").focusout(function() { 
+
+	if ( $("#demo").text().length === 0 ) { 
+		$("#demo").html("<span class='search_letter'>Hey ! I am Saltana</span>");
+		color()
+	}
+
+ })
+var colo = ['#FF0000', '#FF3300', '#FFFF00', '#00CC00', '#009999', '#00FFFF', '#9900CC', '#FF0099', '#FF6600'];
+function color() {
+	var a = $('.search_letter').text().length ;
+	$(".search_letter").css('color', 'red');
+	for ( i = 0 ; i < (a+1); i++) {
+		$(".search_letter:first-letter").css('color', 'red');
+		
+	}
+
+}
+color();
+</script>

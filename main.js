@@ -101,7 +101,24 @@ function colorBorder() {
 
 // ============== ĐOẠN CỰC KÌ QUAN TRỌNG 
 // HÀM DÙNG ĐỂ CÓ THẺ DI CHUYỂN CÁC CỬA SỔ TR
+var a = $('.window').width();
+var b = $('.window').height();
+var c = $(".window").css('font-size').replace('px','');
 
+$('.window').mouseup( change );
+function change(){
+    var d = $('.window').width() ;
+    var e = $('.window').height() ;
+    if ( (0.2*c * (d/a) ) < 16 ) { 
+        var f = 16;
+    } else {
+        var f = 0.2*c * (d/a)
+    } ;
+    if ( d > a ) {
+        $(this).css('font-size' , f + "px")
+    } 
+    
+}
 
 function dragElement(elmnt) {
     var pos1 = 0,
@@ -148,12 +165,14 @@ function dragElement(elmnt) {
         };
 
         if (mapleft > (windowWidth - 10)) {
-            elmnt.style.left = (windowWidth - (10 / 100 * classWindowWidth)) + "px";
+            elmnt.style.left = (windowWidth - (0.1 * classWindowWidth)) + "px";
         } else if (mapleft > (screen.width - 10)) {
-            elmnt.style.left = (screen.width - (10 / 100 * classWindowWidth)) + "px";
+            elmnt.style.left = (screen.width - (0.1 * classWindowWidth)) + "px";
         } else {
             elmnt.style.left = mapleft + "px";
         };
+
+
     }
 
     function closeDragElement() {
@@ -165,7 +184,9 @@ function dragElement(elmnt) {
 // FUNCTION ĐỔI Z-INDEX
 function zIndex() {
     $(this).siblings('.window').css('z-index', 0);
+    $(this).siblings('.window').find('a').css('background-color', '#a89d9d');
     $(this).css('z-index', 11);
+    $(this).find('.window_logo:last-child a:last-child').css('background-color', 'red');
 };
 // CÁI NÀY CỰC KÌ QUAN TRỌNG ĐỂ GIÚP CHO HÀM MOVE CÓ THỂ HOẠT ĐỘNG ĐƯỢC
 
@@ -177,3 +198,4 @@ function addIdToMove() {
         clc[n].id = "window" + (n + 1) + "move";
     };
 };
+

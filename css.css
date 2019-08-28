@@ -1,178 +1,325 @@
-/* BODY */
-.body_container  {
-	margin : 15px 15px auto 15px;
+/* 1.0 : PHẦN CSS CHUNG CHO TOÀN BỘ BAO GỒM THẺ BODY VÀ THẺ HTML */
+body {
+	color:#000;
+	padding:0;
+	margin:0;
+	overflow-x:hidden;
+	width: 100vw;
+	height: 100vh;
 }
-/* AVATAR VÀ SLOGAN ( MÂY BI LÀ SLOGAN ^.^ ) */
-.avatars  {
-	display: flex;	
-}
-.avatars {
-	justify-content: space-between;
-}
-.slogan {
-	height: 150px;
-	display: flex;
-	justify-content: center;
-	font-family: 'Sigmar One', cursive;
-}
-.slogan_container {
-	display: table;
-}
-.long_dash { 
-	background-color: red;
-	width: 150px;
-	height: 4px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-.slogan span {
-	font-size: 60px;
-	font-weight: bolder;
-	text-transform:uppercase;
-}
-.avatars:first-child {
-	margin-left: 25px;
-}
-.avatars:last-child {
-	margin-right: 25px;
-}
-/* MEMBER */ 
-.member_container {
-	margin-left:150px;
-	margin-right:150px;
+/* 2.0: PHẦN CSS CHỨC NĂNG CẤU TRÚC CHUNG */
+	/* 2.1: css cho cái ảnh xong tiêu đề */
+
+	.box {
+		display:table;
+	}
+	.image, .title {
+		vertical-align:middle;
+		display:table-cell;
+	}
+	.box img {
+		width:35px;
+		height:35px;
+		margin:5px;
+	}
+	/* 2.2: css chung cho phần hiển thị các cửa sổ */
+	.window { /* container */
+		background-color:#e3d5d5;
+		display: flex;
+		flex-direction: column;
+		resize:both;
+		overflow:hidden;
+		width: 350px;
+		position: absolute;
+		right: 5px;
+		top: 50px;
+		border-radius: 10px;
+	}
+	.window_taskbar {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+	}
+	.window_taskbar .image img {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		margin-left: 5px;
+		margin: 2.5px;
+		margin-left: 5px;
 	
-}
- .members {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
-}
+	}
+	.window_taskbar .title {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+  		align-items: center; 
+		flex-direction: row;
 
-.member {
-  border-radius: 5px;
-  height: 200px;
-  width: 150px;
-  margin-top: 15px;
-  display: flex;
-  flex-direction : column;
-}
-.member_avatar__container {
-	height: 80%;
-	border-radius: 5px;
-	background-color: #000;
-}
-.member_avatar {
-	padding-right: 5px;
-	padding-left: 5px;
-}
-.member_name__container {
-	height: 20%;
-	text-align: center;
-	font-family: 'Lobster', cursive;
-	margin-top: 5px;
-	background-color: #ab5d0a;
-	border-radius: 15px ;
-	text-transform:capitalize;
-	display: table;
-}
-.member_name {
-	display: table-cell;
-	vertical-align: middle;
-	padding:2px;
-}
+	}
+	.window_taskbar .title span {
+		width: 15px; 
+		height: 15px;
+		border-radius: 50%;
+		margin: 5px;
+		margin-top : 10px;
+		background-color:#b3aa0b;
+	}
+	.window_taskbar .title span:hover {
+		transform: scale(1.2);
+	}
+	.window_taskbar .title span:first-child {
+		background-color: #910606;
+	}
+	.window_taskbar .title span:last-child {
+		background-color:  #de623c;
+	}
+	.window_container { /* khung chứa nội dung */
+		margin:5px;
+		background-color:#fff;
+		padding: 5px;
+		height: 100%;
+		overflow: hidden;
+		border-radius: 10px;
+	}
+	/* css cho chức năng flip / lật */
+	.flip_container {
+		overflow: hidden;
+		height: auto;
+	}
+	.flip_container-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		transition: transform 0.6s;
+		transform-style: preserve-3d;
+	}
+	.flip_container:hover .flip_container-inner {
+		transform: rotateY(180deg);
+	}
+	.flip_container-front, .flip_container-back {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+	}
+	.flip_container-back {
+		transform: rotateY(180deg);
+	}
+	/* 2.3 copyright */
+	.copyright img {
+		border-radius: 50%;
+	}
+/* 3.0: PHẦN CSS CHO PHẦN TÌM KIẾM */
 
-.member_avatar img {
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-	border-radius: 5px;
+/* 4.0: PHẦN CSS CHO PHẦN HIỂN THỊ DANH SÁCH BÀI ĐĂNG CŨNG NHƯ CÁC CỬA SỔ WINDOW CHỨC NĂNG */
+.main { /* đây là cái chứa danh sách bài đăng và chứa các cửa sổ hiển thị  */
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:45px;
+	margin-bottom:80px;
+	display:flex;
+	flex-direction:row;
+	justify-content:space-around;
 }
-/* ACTIVITIES */ 
-.acti_container {
-	margin-top:50px; 
+	/* ============= 4.1: Phần Css Cho Phần Hiển Thị Danh Sách Bài Đăng ============== */
+	.main_container { /* đây là cái chứa toàn bộ danh sách bài đăng */
+		width:95%;
+		list-style:none;
+		display:-webkit-box;
+		display:-moz-box;
+		display:-ms-flexbox;
+		display:-webkit-flex;
+		display:flex;
+		-webkit-flex-flow:row wrap;
+		justify-content:space-around;
+	}
+	/* ======== */
+	.category { /* Mỗi categoy chứa mỗi chủ đề hay còn gọi là nhãn khác nhau */
+		padding:5px;
+		width:350px;
+		margin-top:10px;
+		color:#fff;
+		display:flex;
+		flex-direction:column;
+		border-radius:5px;
+	}
+	.category_image { /* ảnh chủ đề */
+		display:flex;
+		align-items:center;
+		justify-content:center;
+	}
+	.category_image img {
+		width:100px;
+		height:100px;
+		object-fit:contain;
+		border-style:solid;
+		border-color:#ff0;
+		border-width:5px;
+		border-radius:50%;
+	}
+	.category_title { /* tiêu đề chử đề */
+		text-align:center;
+		font-size:25px;
+		text-decoration-line:underline;
+		padding-top:5px;
+	}
+	.category_body { /* nơi hiển thị chính của các bài viết gợi ý*/
+		list-style-type:none;
+		margin:0;
+		padding:0;
+	}
+	.category_body li {
+		border-bottom:1px solid #555;
+		padding-bottom:5px;
+		padding-top:5px;
+	}
+	.category_body li:last-child {
+		border-bottom:none;
+	}
+	.category_body .box img {
+		width:25px;
+		height:25px;
+		margin:5px;
+		border-radius:50%;
+		border-style:solid;
+		border-width:5px;
+	}
+	/* ============= 4.2: Phần Css Cho Phần Hiển Thị Các Cửa Sổ Chức Năng ============= */
+			/* 4.2.1: Phần css cửa cửa sổ hiển thị các thành viên của blog */
+			.member .box {
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: left;
+			}
+			.member .box .title {
+				width: 100%;
+			}
+			.title_container {
+				display: flex;
+				flex-direction: column;
+			}
+			.title_container span:first-child {
+				font-weight: bolder;
+				color: green
+			}
+			.title_container span:last-child {
+				font-size: small;
+			}
+
+			/* 4.2.2: Phần css hiển thị menu cửa blog */
+			/* 4.2.3: Phần css hiển thị thông báo / bài viết liên quan */ 
+			/* 4.2.4: Phần css hiển thị số hiệu phiên bản */
+			.version {
+			    border-radius: 50%;
+			    display: flex;
+			    margin-left: auto;
+			    margin-right: auto;
+			    flex-direction: column;
+			}
+			.version_container * {
+			    margin-top: 5px;
+			}
+			.version_more {
+			    text-align: left;
+			}
+			.version_more .box{
+				margin-right: auto;
+				margin-left: auto;
+				width: 80%;
+				border-bottom: solid 2px #c2b4b4;
+			}
+			.version_more .box .title {
+				width: 100%;
+			}
+			#fa-check {
+			    font-size: 50px;
+			    background-color: red;
+			    padding: 15px;
+			    border-radius: 50%;
+			}
+/* 5.0 PHẦN CSS CHO PHẦN HIỂN THỊ BÀI ĐĂNG */
+
+/* 6.0 PHẦN CSS CHO PHẦN TASKBAR */
+.taskbar {
+	position:fixed;
+	bottom:0;
+	height:43px;
+	width:100%;
+	background:#004172;
+	padding-bottom:5px;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
 }
-.acti_container {
-	display: flex;
-	justify-content: space-between;
+.taskbar_icon {
+	height:43px;
+	width:48px;
+	position:relative;
 }
-.acti_container__section {
-	width: 50%;
-	display: flex;
+.taskbar_icons a i {
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	font-size:21px;
+	color:#fff;
+}
+.taskbar_icons a:hover i {
+	font-size:30px;
+}
+.taskbar_icons a:active {
+	box-shadow:0 5px #666;
+	transform:translateY(4px);
+}
+.taskbar a {
+	display:table-cell;
+	border-bottom:2px solid transparent;
+	padding-left:25px;
+	padding-right:25px;
+}
+.taskbar a:hover {
+	background-color:rgba(255,255,255,.1) !important;
+}
+@keyframes warningFlash {
+	50% {
+	  opacity:0;
+	}
+}
+/* 7.0 PHẦN PHỤ : PHẦN CODER ĐẦU TRANG */
+.header {
+	display:flex;
 	flex-direction:column;
+	align-items:flex-start;
+	margin-left: 5px;
 }
-.acti_title__container {
-	display: table;
-	margin-right: auto;
-	margin-left: auto;
-}
-.acti_title {
-	display: flex;
-	flex-direction:column;
-}
-
-.acti_title span:first-child {
-	padding: 5px 10px 5px 10px;
-	font-family: 'Amatic SC', cursive;
-	color: green;
-	font-size: 20px;
-	font-weight: bold;
-}
-.acti_title span:last-child {
-	margin-top:5px;
-	text-transform:capitalize;
-	font-size: smaller;
-}
-.acti_title span{
-	text-align: center;
-}
-/*  những địa điểm đã đi và những câu chuyện trong làng */
-.acti_section /* acti_places__container , acti_stories_container */ {
-	margin-right: auto;
-	margin-left: auto;
-	width: 70%;
-	margin-top: 25px;
-	margin-bottom: 25px;
-}
-.acti_section ul { 
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
- }
- .acti_section li {
- 	margin-bottom: 5px;
- 	font-family: 'Titillium Web', sans-serif;
- }
- /* ul và li */
- .places_container {
- 	display: table;
- }
- .acti_image , .acti_text {
- 	vertical-align:middle;
- 	display: table-cell;
- }
- .acti_image img {
- 	height: 25px;
- 	width: 25px;
- 	border-radius: 50%;
- 	margin-right: 5px; 
- }
-.acti_text {
-	background-color: #c9bdbd;
+/* 8.0 SEARCH BOX */
+.search {
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
 	border-radius: 10px;
-	padding: 0 5px 0 5px;
-}
-/* FOOTER */
+	border:solid 1px red;
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+	position: fixed;
+	z-index: 9999;
+	background-color: #fff;
 
-.footer {
-	margin: 50px;
+}
+
+.search_container {
+	padding: 10px;
+	justify-content: space-between;
+	flex-direction: row;
 	display: flex;
-	justify-content: center;
+}
+.search_custom {
+	width:20%;
+	border: solid;
 }

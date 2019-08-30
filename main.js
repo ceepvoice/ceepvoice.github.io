@@ -291,5 +291,21 @@ function loadImage(){
         } )
         $('img').each(function(){ 
             $(this).one('error', function(){ $(this).removeAttr('src') })
-         } )
+         } ) 
+        // load font awesome i 
+         $('i').each(function(){
+            var a = $(this).attr('data-class');
+            $(this).attr('class',a)
+            $(this).removeAttr('data-class')
+
+        } )
+         // load css
+          $('link').each(function(){
+            var a = $(this).attr('data-href');
+            $(this).attr('href',a)
+            $(this).removeAttr('data-href')
+
+        } )
+        // display body
+        $('body').removeAttr('style')
 }

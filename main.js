@@ -1,6 +1,6 @@
 // CÁC BIẾN ĐẾM QUAN TRỌNG 
 var postNumber = 10; // Đây là số bài viết sẽ hiển thị ở mỗi chủ đề trong trang chủ
-var color = ['#FF0000', '#FF3300', '#FFFF00', '#00CC00', '#009999', '#00FFFF', '#9900CC', '#FF0099', '#FF6600', '#CCFF33', '#660000', '#CC0099', '#003300','#636018','#002e03','#9e13b0','#13b07e','#9e13b0','#f06573']; // Đây là các màu sắc mà nó sẽ border hình ảnh cái bài viết hiển thị trên trang chủ
+var color = ['#FF0000', '#FF3300', '#FFFF00', '#00CC00', '#009999', '#00FFFF', '#9900CC', '#FF0099', '#FF6600', '#CCFF33', '#660000', '#CC0099', '#003300', '#636018', '#002e03', '#9e13b0', '#13b07e', '#9e13b0', '#f06573']; // Đây là các màu sắc mà nó sẽ border hình ảnh cái bài viết hiển thị trên trang chủ
 
 // CÁC BIẾN THIẾT LẬP MÀU SẮC TÙY CHỈNH CHO NGƯỜI DÙNG
 var categoryColor = '#0e540f'; // Màu sắc cho khung category 
@@ -101,11 +101,12 @@ function colorBorder() {
         $(a).css('border-color', color[i]);
     }
 };
+
 function colorBorderMenu() {
-    for (i = 0; i < ( ($('.menu_container .box').length) + 1); i++) {
+    for (i = 0; i < (($('.menu_container .box').length) + 1); i++) {
         var b = '.menu_container .box:nth-child(' + (i + 1) + ') img';
         $(b).css('border-color', color[i]);
-        $('.menu_container .box:nth-child(11) img').css('border-color','red')
+        $('.menu_container .box:nth-child(11) img').css('border-color', 'red')
     }
 
 };
@@ -113,21 +114,22 @@ function colorBorderMenu() {
 // HÀM DÙNG ĐỂ CÓ THẺ DI CHUYỂN CÁC CỬA SỔ TR
 var a = $('.window').width();
 var b = $('.window').height();
-var c = $('.window').css('font-size').replace('px','');
+var c = $('.window').css('font-size').replace('px', '');
 
-$('.window').mouseup( change );
-function change(){
-    var d = $('.window').width() ;
-    var e = $('.window').height() ;
-    if ( (0.2*c * (d/a) ) < 16 ) { 
+$('.window').mouseup(change);
+
+function change() {
+    var d = $('.window').width();
+    var e = $('.window').height();
+    if ((0.2 * c * (d / a)) < 16) {
         var f = 16;
     } else {
-        var f = 0.2*c * (d/a)
-    } ;
-    if ( d > a ) {
-        $(this).css('font-size' , f + "px")
-    } 
-    
+        var f = 0.2 * c * (d / a)
+    };
+    if (d > a) {
+        $(this).css('font-size', f + "px")
+    }
+
 }
 
 function dragElement(elmnt) {
@@ -175,7 +177,7 @@ function dragElement(elmnt) {
             elmnt.style.top = maptop + "px"
         };
         if (maptop > windowHeight) {
-            elmnt.style.top = windowHeight - $(".window").width()+ "px"
+            elmnt.style.top = windowHeight - $(".window").width() + "px"
         }
         if (mapleft > (windowWidth - 10)) {
             elmnt.style.left = (windowWidth - (0.1 * classWindowWidth)) + "px";
@@ -184,8 +186,8 @@ function dragElement(elmnt) {
         } else {
             elmnt.style.left = mapleft + "px";
         };
-        if ( mapleft < 10 ) {
-             elmnt.style.left = 0;
+        if (mapleft < 10) {
+            elmnt.style.left = 0;
         }
 
 
@@ -219,54 +221,75 @@ function addIdToMove() {
 
 function category() {
     var label = {
-        'Templates':'coder.jpg',
-        'Hacking':'coder.jpg',
-        'Blogspot':'coder.jpg',
-        'Linux':'coder.jpg'    
+        'Templates': 'coder.jpg',
+        'Hacking': 'coder.jpg',
+        'Blogspot': 'coder.jpg',
+        'Linux': 'coder.jpg'
     }
-    a = Object.keys(label).length ;
+    a = Object.keys(label).length;
 
     var e = $('.category');
 
     var d = $('.category_body .box');
     /* nhân bản các thẻ bõ */
-    for ( var i = 0 ; i < (postShow - 1); i++) {
+    for (var i = 0; i < (postShow - 1); i++) {
         d.clone().insertAfter(d);
     }
     /* nhân bản các category */
-    for (var i = 0; i < (a-1); i++) {
-       e.clone().insertAfter(e);
-   }
+    for (var i = 0; i < (a - 1); i++) {
+        e.clone().insertAfter(e);
+    }
 
-   var b = document.getElementsByClassName("category");
-   for (n = 0, length = b.length; n < length; n++) {
-    b[n].setAttribute('data-label', Object.keys(label)[n]);
-    b[n].setAttribute('data-label-image', Object.values(label)[n])
-};
-$('.category').each( function(){
-    $(this).find('.category_image img').attr('data-src', $(this).attr('data-label-image'));
-    $(this).find('.category_title span').text( $(this).attr('data-label'));
-    var a = $(this).attr('data-label');
-    $(this).attr('data-label-json',bloggerUrl+blogId+'/posts/search?q=label:('+a+')&fetchBodies=false&fields=items(title,id)&key='+bloggerApiKey)
-}) ; 
+    var b = document.getElementsByClassName("category");
+    for (n = 0, length = b.length; n < length; n++) {
+        b[n].setAttribute('data-label', Object.keys(label)[n]);
+        b[n].setAttribute('data-label-image', Object.values(label)[n])
+    };
+    $('.category').each(function() {
+        $(this).find('.category_image img').attr('data-src', $(this).attr('data-label-image'));
+        $(this).find('.category_title span').text($(this).attr('data-label'));
+        var a = $(this).attr('data-label');
+        $(this).attr('data-label-json', bloggerUrl + blogId + '/posts/search?q=label:(' + a + ')&fetchBodies=false&fields=items(title,id)&key=' + bloggerApiKey)
+    });
 }
 
 
-function addIdTitle(){
+function addIdTitle() {
     var a = $(".category").length;
-    for (let i=0;i<(a+1) ;i++){
+    for (let i = 0; i < (a + 1); i++) {
         b = $('.category').eq(i);
         c = b.attr('data-label-json');
-        $.getJSON( c, function(re) {
-            var d = re.items.length ;
-            if ( postShow > d) {
-                postShow = d;
-            }
+        $.getJSON(c, function(re) {
+            var d = re.items.length;
             e = $('.category').eq(i);
-            for (let i = 0; i < postShow ; i++) {
-            e.find('.title').eq(i).text (re.items[i].title);
-            e.find('.box').eq(i).attr ('data-post-id',re.items[i].id);
-       }
+            if (postShow > d) {
+
+                for (i = 0; i < (postShow - d); i++) {
+                    e.find('.box').eq(d + i).empty()
+
+                };
+
+            }
+
+            for (let i = 0; i < postShow; i++) {
+                e.find('.title').eq(i).text(re.items[i].title);
+                e.find('.box').eq(i).attr('data-post-id', re.items[i].id);
+            }
         })
     }
+}
+
+
+
+// BẮT ĐẦU TẢI VÀ ĐÍNH ẢNH SAU KHI TOÀN BỘ ĐƯỢC LOAD OK
+function loadImage(){
+        $('img').each(function(){
+            var a = $(this).attr('data-src');
+            $(this).attr('src',a)
+            $(this).removeAttr('data-src')
+
+        } )
+        $('img').each(function(){ 
+            $(this).one('error', function(){ $(this).removeAttr('src') })
+         } )
 }

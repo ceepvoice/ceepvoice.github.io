@@ -65,7 +65,7 @@
                 </div>
                 <ul class="category_body">
                     <!-- Phần thân chủ đề nơi chứa một số bài post và một số chức năng mở rộng khác -->
-                    <li class="box">
+                    <li class="box" >
                         <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
                         <!-- Đây là phần hiển thị ảnh -->
                         <img class="image"></img>
@@ -343,11 +343,11 @@
 
         <script type="text/javascript">
             // Hiển thị thông tin thời gian
-            clientTime();
+ 
             // Hiển thị thông tin trình duyệt
             // document.getElementById('broswer').innerHTML = platform.name +' '+ platform.version; // In thông tin trình duyệt người dùng
             //document.getElementById('osSystem').innerHTML = platform.os;
-            colorBorder();
+           
             colorBorderMenu();
             // Hiển thị thông tin internet kết nối client
             internetInfo();
@@ -403,9 +403,11 @@
 
            	} );
            category();
+           addIdTitle();
            window.onload = function() { 
-                addIdTitle();
-                loadImage();
+                
+          
+                colorBorder();
             }
           
         </script>

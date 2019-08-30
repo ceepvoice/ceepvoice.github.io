@@ -12,13 +12,6 @@ function userColor() {
     $('.category').css('background-color', categoryColor);
 };
 // MỘT SỐ HÀM KIỂM TRA LỖI TRONG TRANG
-function checkError() {
-        // KIỂM TRA SỐ BÀI VIẾT postNumber HIỂN THỊ CÓ BẰNG SỐ MÀU SẮC TRONG BIẾN COLOR KHÔNG
-        if (postNumber != color.length) {
-            document.getElementById('logging').innerHTML = "Thiết lập không cân bằng giữa postNumber và số lượng màu sắc có trong biến color";
-        }
-    }
-    // ĐỒNG HỒ HIỂN THỊ ĐẦU TRANG 
 
 // Hàm khởi tạo đồng hồ
 function clientTime() {
@@ -96,7 +89,7 @@ function internetInfo() {
 // ĐOẠN JS ĐỂ LÀM MÀU CHO CÁC BÀI VIẾT
 
 function colorBorder() {
-    for (i = 0; i < (postNumber + 1); i++) {
+    for (i = 0; i < (postShow + 1); i++) {
         var a = '.category_body .box:nth-child(' + (i + 1) + ') img';
         $(a).css('border-color', color[i]);
     }
@@ -249,7 +242,7 @@ function category() {
         $(this).find('.category_image img').attr('data-src', $(this).attr('data-label-image'));
         $(this).find('.category_title span').text($(this).attr('data-label'));
         var a = $(this).attr('data-label');
-        $(this).attr('data-label-json', bloggerUrl + blogId + '/posts/search?q=label:(' + a + ')&fetchBodies=false&fields=items(title,id)&key=' + bloggerApiKey)
+        $(this).attr('data-label-json', bloggerUrl + blogId + '/posts?labels=' + a + '&maxResults='+postShow+'&fetchImages=true&fetchBodies=false&fields=items(title,id,images)&key=' + bloggerApiKey)
     });
 }
 
@@ -274,15 +267,15 @@ function addIdTitle() {
             for (let i = 0; i < postShow; i++) {
                 e.find('.title').eq(i).text(re.items[i].title);
                 e.find('.box').eq(i).attr('data-post-id', re.items[i].id);
+                e.find('.image').eq(i).attr('data-src', re.items[i].images[0].url)
             }
+            loadImage();
         })
     }
 }
-
-
-
 // BẮT ĐẦU TẢI VÀ ĐÍNH ẢNH SAU KHI TOÀN BỘ ĐƯỢC LOAD OK
 function loadImage(){
+        // load img form data-src
         $('img').each(function(){
             var a = $(this).attr('data-src');
             $(this).attr('src',a)

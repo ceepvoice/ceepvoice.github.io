@@ -1,10 +1,13 @@
 // CÁC BIẾN ĐẾM QUAN TRỌNG 
 var postNumber = 10; // Đây là số bài viết sẽ hiển thị ở mỗi chủ đề trong trang chủ
-var color = ['#FF0000', '#FF3300', '#FFFF00', '#00CC00', '#009999', '#00FFFF', '#9900CC', '#FF0099', '#FF6600', '#CCFF33', '#660000', '#CC0099', '#003300']; // Đây là các màu sắc mà nó sẽ border hình ảnh cái bài viết hiển thị trên trang chủ
+var color = ['#FF0000', '#FF3300', '#FFFF00', '#00CC00', '#009999', '#00FFFF', '#9900CC', '#FF0099', '#FF6600', '#CCFF33', '#660000', '#CC0099', '#003300','#636018','#002e03','#9e13b0','#13b07e','#9e13b0','#f06573']; // Đây là các màu sắc mà nó sẽ border hình ảnh cái bài viết hiển thị trên trang chủ
 
 // CÁC BIẾN THIẾT LẬP MÀU SẮC TÙY CHỈNH CHO NGƯỜI DÙNG
 var categoryColor = '#0e540f'; // Màu sắc cho khung category 
-
+var bloggerUrl = 'https://www.googleapis.com/blogger/v3/blogs/'
+var bloggerApiKey = 'AIzaSyD6l0knzX0Muw_YnhAlwcUSvLyxrqte_Og';
+var blogId = '3672902208348460125';
+var postShow = 5; // <= 10;
 function userColor() {
     $('.category').css('background-color', categoryColor);
 };
@@ -94,16 +97,23 @@ function internetInfo() {
 
 function colorBorder() {
     for (i = 0; i < (postNumber + 1); i++) {
-        var a = '.box:nth-child(' + (i + 1) + ') img';
+        var a = '.category_body .box:nth-child(' + (i + 1) + ') img';
         $(a).css('border-color', color[i]);
     }
 };
+function colorBorderMenu() {
+    for (i = 0; i < ( ($('.menu_container .box').length) + 1); i++) {
+        var b = '.menu_container .box:nth-child(' + (i + 1) + ') img';
+        $(b).css('border-color', color[i]);
+        $('.menu_container .box:nth-child(11) img').css('border-color','red')
+    }
 
+};
 // ============== ĐOẠN CỰC KÌ QUAN TRỌNG 
 // HÀM DÙNG ĐỂ CÓ THẺ DI CHUYỂN CÁC CỬA SỔ TR
 var a = $('.window').width();
 var b = $('.window').height();
-var c = $(".window").css('font-size').replace('px','');
+var c = $('.window').css('font-size').replace('px','');
 
 $('.window').mouseup( change );
 function change(){
@@ -157,13 +167,16 @@ function dragElement(elmnt) {
         mapleft = elmnt.offsetLeft - pos1;
         classWindowWidth = $(".window").width(); // Chiều rộng cửa class window viết tắt củ class window width 
         windowWidth = $(window).width(); // Chiều rộng của cửa sổ window màn hình
+        windowHeight = $(window).height();
         // set the element's new position:
         if (maptop < -5) {
             elmnt.style.top = "-5px";
         } else {
             elmnt.style.top = maptop + "px"
         };
-
+        if (maptop > windowHeight) {
+            elmnt.style.top = windowHeight - $(".window").width()+ "px"
+        }
         if (mapleft > (windowWidth - 10)) {
             elmnt.style.left = (windowWidth - (0.1 * classWindowWidth)) + "px";
         } else if (mapleft > (screen.width - 10)) {
@@ -171,6 +184,9 @@ function dragElement(elmnt) {
         } else {
             elmnt.style.left = mapleft + "px";
         };
+        if ( mapleft < 10 ) {
+             elmnt.style.left = 0;
+        }
 
 
     }
@@ -184,9 +200,8 @@ function dragElement(elmnt) {
 // FUNCTION ĐỔI Z-INDEX
 function zIndex() {
     $(this).siblings('.window').css('z-index', 0);
-    $(this).siblings('.window').find('a').css('background-color', '#a89d9d');
+    $(this).siblings('.window_container').css('display', 'none');
     $(this).css('z-index', 11);
-    $(this).find('.window_logo:last-child a:last-child').css('background-color', 'red');
 };
 // CÁI NÀY CỰC KÌ QUAN TRỌNG ĐỂ GIÚP CHO HÀM MOVE CÓ THỂ HOẠT ĐỘNG ĐƯỢC
 
@@ -199,3 +214,59 @@ function addIdToMove() {
     };
 };
 
+// CAÍ NÀY CÓ CHỨC NĂNG THÊM TẤT CẢ CÁC CHỦ ĐỀ THEO NHÃ VÀO BÀI VIẾT
+
+
+function category() {
+    var label = {
+        'Templates':'coder.jpg',
+        'Hacking':'coder.jpg',
+        'Blogspot':'coder.jpg',
+        'Linux':'coder.jpg'    
+    }
+    a = Object.keys(label).length ;
+
+    var e = $('.category');
+
+    var d = $('.category_body .box');
+    /* nhân bản các thẻ bõ */
+    for ( var i = 0 ; i < (postShow - 1); i++) {
+        d.clone().insertAfter(d);
+    }
+    /* nhân bản các category */
+    for (var i = 0; i < (a-1); i++) {
+       e.clone().insertAfter(e);
+   }
+
+   var b = document.getElementsByClassName("category");
+   for (n = 0, length = b.length; n < length; n++) {
+    b[n].setAttribute('data-label', Object.keys(label)[n]);
+    b[n].setAttribute('data-label-image', Object.values(label)[n])
+};
+$('.category').each( function(){
+    $(this).find('.category_image img').attr('data-src', $(this).attr('data-label-image'));
+    $(this).find('.category_title span').text( $(this).attr('data-label'));
+    var a = $(this).attr('data-label');
+    $(this).attr('data-label-json',bloggerUrl+blogId+'/posts/search?q=label:('+a+')&fetchBodies=false&fields=items(title,id)&key='+bloggerApiKey)
+}) ; 
+}
+
+
+function addIdTitle(){
+    var a = $(".category").length;
+    for (let i=0;i<(a+1) ;i++){
+        b = $('.category').eq(i);
+        c = b.attr('data-label-json');
+        $.getJSON( c, function(re) {
+            var d = re.items.length ;
+            if ( postShow > d) {
+                postShow = d;
+            }
+            e = $('.category').eq(i);
+            for (let i = 0; i < postShow ; i++) {
+            e.find('.title').eq(i).text (re.items[i].title);
+            e.find('.box').eq(i).attr ('data-post-id',re.items[i].id);
+       }
+        })
+    }
+}

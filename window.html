@@ -1,7 +1,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!-- font awesome -->
 <style type="text/css">
 
-	.tabs {
+	.menu_container {
 		width: 20vw;
 		display: flex;
 		flex-direction: column;
@@ -10,7 +10,7 @@
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
-	span {
+	.menu_container .box span {
 		text-align: left;
 		background-color: inherit;
 		  color: black;
@@ -23,38 +23,34 @@
 		  transition: 0.3s;
 		  font-size: 17px;
 	}
-	.right {
+	.right_container {
 		width: 80%;
 	}
-	.dash {
+	.menu_dash {
 		border:solid 1px;
 	}
-	.app { /* Đoạn css cho các post hiển thị trên chủ đề */
+	.menu_container .box { /* Đoạn css cho các post hiển thị trên chủ đề */
 		display: table;
 		margin: 5px;
 		height: 25px;
 		border-spacing: 5px 5px;
 		 cursor: pointer;
 	}
-	.app:hover  {
+	.menu_container .box:hover  {
 		background-color: #9e8a8a;
 		border-radius: 15px;
 	}
-	.app:hover .image {
+	.menu_container .box:hover .image {
 		background-color: white;
 	}
-	.app:active {
+	.menu_container .box:active {
 		 box-shadow: 0 2px #666;
   transform: translateY(2px);
 	}
-	.image {
+	.menu_container .box .image {
 		background-color: white;
 	}
-		.image , .name { /* Đoạn css cho post title và post img */
-			vertical-align:middle;
-			display: table-cell;
-		}
-			.app img { 
+			.menu_container .box img { 
 				width: 25px; 
 				height: 25px;
 				margin-right:5px;
@@ -63,18 +59,18 @@
 				padding: 2px;
 				border-radius: 50%;
 			}
-		.name { 
+		.menu_container .box .title { 
 			padding-left: 5px;
 		}
-		.startName {
+		.starttitle {
 			padding-left: 10px;
 			font-weight: bolder;
 		}
-		.startName::after {
+		.starttitle::after {
 			content: '.'
 		}
 		/* demo */
-		.container{
+		.menu{
 		display: flex;
 		position: fixed;
 		flex-direction: row;
@@ -91,117 +87,86 @@
 }
 
 
-input#menu {
-    display: none;
-}
-label {
-
-    font-size: 56px;
-    display: block;
-    cursor: pointer;
-
-    padding: 10px 0 10px 50px;
-}
-#menu1 {
-	position: fixed;  
-    width:100%;
-    bottom:0;
-    left:0;
-
-}
-i {
-	background-color: #004172;
-	padding: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
-	border-radius: 5px;
-	font-size: 35px;
-	color: green;
-	margin-bottom: 50px;
-}
-i:hover {
-	opacity: 0.5;
-}
-.tabs::-webkit-scrollbar {
+.menu_container::-webkit-scrollbar {
   display: none
 
 }
-.tabs:hover::-webkit-scrollbar {
+.menu_container:hover::-webkit-scrollbar {
 	display: block;
  width: 10px;
 
 }
 /* Track */
-.tabs::-webkit-scrollbar-track {
+.menu_container::-webkit-scrollbar-track {
   background: #f1f1f1; 
 
 }
 
 /* Handle */
-.tabs::-webkit-scrollbar-thumb {
+.menu_container::-webkit-scrollbar-thumb {
   background: #888; 
   border-radius: 15px;
 }
 
 /* Handle on hover */
-.tabs::-webkit-scrollbar-thumb:hover {
+.menu_container::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
 </style>
 
-<div class="container">
-	<div class="tabs">	
-		<span class="startName">A</span>
-		<div class="app"> 
+<div class="menu">
+	<div class="menu_container">	
+		<span class="starttitle">A</span>
+		<div class="box"> 
 			<img class="image" src='https://cdn0.iconfinder.com/data/icons/mintab-outline-for-ios-4/30/alarm-clock-timer-time-ring-512.png'></img>
-			<span class="name">Alarm</span>
+			<span class="title">Alarm</span>
 		</div>
-		<span class="startName">C</span>
-		<div class="app"> 
+		<span class="starttitle">C</span>
+		<div class="box"> 
 			<img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
-			<span class="name">Color</span>
+			<span class="title">Color</span>
 		</div>
-		<div class="app"> 
+		<div class="box"> 
 			<img class="image" src='https://cdn1.iconfinder.com/data/icons/business-and-finance-2-5/130/99-512.png'></img>
-			<span class="name">Collaboration</span>
+			<span class="title">Collaboration</span>
 		</div>
-		<div class="app"> 
+		<div class="box"> 
 			<img class="image" src='https://cdn1.iconfinder.com/data/icons/network-and-comminications-flat-circle-shadow-vo-1/120/control__data__share__community__social__communication__connect-512.png'></img>
-			<span class="name">Community</span>
+			<span class="title">Community</span>
 		</div>
-		<span class="startName">D</span>
-		<div class="app"> 
+		<span class="starttitle">D</span>
+		<div class="box"> 
 			<img class="image" src='https://cdn4.iconfinder.com/data/icons/game-design-flat-icons-2/512/4_magnet_resource_game_design_flat_icon-512.png'></img>
-			<span class="name">Data Saving Mode</span>
+			<span class="title">Data Saving Mode</span>
 		</div>
-		<span class="startName">F</span>
-		<div class="app"> 
+		<span class="starttitle">F</span>
+		<div class="box"> 
 			<img class="image" src='https://icon-library.net/images/feedback-icon-vector/feedback-icon-vector-10.jpg'></img>
-			<span class="name">Feedback</span>
+			<span class="title">Feedback</span>
 		</div>
-		<div class="app"> 
+		<div class="box"> 
 			<img class="image" src='https://icon-library.net/images/file-explorer-icon/file-explorer-icon-14.jpg'></img>
-			<span class="name">File Explore</span>
+			<span class="title">File Explore</span>
 		</div>
-		<span class="startName">L</span>
-		<div class="app"> 
+		<span class="starttitle">L</span>
+		<div class="box"> 
 			<img class="image" src='https://cdn3.iconfinder.com/data/icons/cosmo-color-documents-2/40/log-512.png'></img>
-			<span class="name">Log</span>
+			<span class="title">Log</span>
 		</div>
-		<span class="startName">M</span>
-		<div class="app"> 
+		<span class="starttitle">M</span>
+		<div class="box"> 
 			<img class="image" src='https://cdn0.iconfinder.com/data/icons/music-audio-video-flat-square-rounded-vol-1/150/81__chevron__button__music__player-512.png'></img>
-			<span class="name">Music Player</span>
+			<span class="title">Music Player</span>
 		</div>
-		<span class="startName">P</span>
-		<div class="app"> 
+		<span class="starttitle">P</span>
+		<div class="box"> 
 			<img class="image" src='https://cdn2.iconfinder.com/data/icons/computer-security-1/512/12-128.png'></img>
-			<span class="name">Policy</span>
+			<span class="title">Policy</span>
 		</div>
-		<span class="startName">T</span>
-		<div class="app"> 
+		<span class="starttitle">T</span>
+		<div class="box"> 
 			<img class="image" src='https://image.flaticon.com/icons/png/128/2008/2008862.png'></img>
-			<span class="name">Toolkits</span>
+			<span class="title">Toolkits</span>
 		</div>
 
 	</div>

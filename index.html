@@ -3,10 +3,12 @@
 <!-- nullsalt.org -->
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NullShell &#128298;</title>
     <!-- GHI IP CỦA CLIENT -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
     <!-- Jquery -->
     <script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
     <link rel="stylesheet" type="text/css" href="css.css" />
@@ -31,21 +33,20 @@
     </div>
     <!-- SEARCH BOX -->
     <div class="search">
-        <div class="search_container">
-            <div class="search_custom"><!-- cài đặt tìm kiếm -->
-                123123
+     <div class="search_container">
+        <div class="virtual">
+            <div class="saltana">
+                <div class="search_span"><div class="search_span" style="border-radius: 30%;"></div></div>
             </div>
-            <div class="search_box">
-                <div class="search_here"><!-- gõ vào đây để tìm kiếm -->
-                    <input type="text" placeholder="Hi ! I'am Saltana">
-                </div>
-                <div class="search_sug"><!-- phần hiển thị các kết quả tìm kiếm -->
-                </div>
-            </div>
-            <div class="search_custom">
-                123
-            </div>
+            <form onsubmit="demo()">
+                <input class="search_here" id='search' type="text" placeholder="Search Here ...">
+            </form>
         </div>
+        <select id='select_label'>
+            <option selected="selected">All</option>
+        </select>
+        </div>
+        <p id='searchLive'></p>
     </div>
     <!-- MAIN -->
     <div class="main">
@@ -56,10 +57,10 @@
                 <div class="category_header">
                     <!-- Phần đầu nơi chưa image và title và một số thứ khác của chủ đề -->
                     <div class="category_image">
-                        <img src="image/category/kalilinux.png"></img>
+                        <img></img>
                     </div>
                     <div class="category_title">
-                        <span>Kali Linux</span>
+                        <span></span>
                     </div>
                 </div>
                 <ul class="category_body">
@@ -67,19 +68,10 @@
                     <li class="box">
                         <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
                         <!-- Đây là phần hiển thị ảnh -->
-                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <img class="image"></img>
                         <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
                         <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-							Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-						</span>
-                    </li>
-                    <li class="box">
-                        <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-                        <!-- Đây là phần hiển thị ảnh -->
-                        <img class="image" src="image/category/kalilinux.png"></img>
-                        <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-                        <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-							Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+							
 						</span>
                     </li>
                 </ul>
@@ -96,6 +88,9 @@
                         <div class="window_taskbar">
                             <div class="image">
                                 <img src="coder.jpg"/>
+                            </div>
+                             <div class="window_name">
+                                Member
                             </div>
                             <div class="title">
                                 <span class="span"></span>
@@ -144,12 +139,77 @@
             	                </div>
             </div>
         </div>
+                <div class='window' style="height: 200px;">
+                 
+                        <div class="window_taskbar">
+                            <div class="image">
+                                <img src="coder.jpg"/>
+                            </div>
+                             <div class="window_name">
+                                Version and Update
+                            </div>
+                            <div class="title">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                
+                    <div class='window_container'>
+                        <div class="flip_container">
+                            <div class="flip_container-inner">
+                                <div class="flip_container-front">
+                                    <div class="version_container">
+                                        <div id='fa-check' class="fas fa-check"></div>
+                                        <div class="version"></div>
+                                        <span>Bạn đang sử dụng phiên bản <div class="new_or_old"></div></span>
+                                    </div>
+                                </div>
+                                <div class="flip_container-back">
+                                    <div class="version_more">
+                                        <div class="box">
+                                            <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+                                            <!-- Đây là phần hiển thị ảnh -->
+                                            <img class="image" src="https://cdn2.iconfinder.com/data/icons/shopping-online-e-commerce-store/512/tag_label_shopping_free-512.png"></img>
+                                            <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+                                            <span class="title" > <!-- Cái này hiển thị tiêu đề bài viết đó -->
+                                                Bản cập nhật miễn phí hiện <div id="update"></div> với phiên bản <div id='uVersion'></div>
+                                            </span>
+                                        </div>
+                                        <div class="box">
+                                            <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+                                            <!-- Đây là phần hiển thị ảnh -->
+                                            <img class="image" src="https://cdn4.iconfinder.com/data/icons/personal-business-finance-gray-series/64/gray-39-512.png"></img>
+                                            <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+                                            <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+                                                Bản cập nhật trả phí hiện <div id='pUpdate'></div> với phiên bản <div id='pVersion'></div>
+                                            </span>
+                                        </div>
+                                        <div class="box">
+                                            <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
+                                            <!-- Đây là phần hiển thị ảnh -->
+                                            <img class="image" src="https://cdn4.iconfinder.com/data/icons/glyph-ui-icons-part-2/22/menu-512.png"></img>
+                                            <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
+                                            <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
+                                    Xem thêm tại <a href="https://nullshell.org">nullshell.org</a>
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+
+                    </div>
+                </div>
         <div class='window' style="height: 200px;">
          
                 <div class="window_taskbar">
                     <div class="image">
                         <img src="coder.jpg"/>
+                    </div>
+                     <div class="window_name">
+                        Random Post
                     </div>
                     <div class="title">
                         <span></span>
@@ -159,53 +219,116 @@
                 </div>
         
             <div class='window_container'>
-                <div class="flip_container">
-                    <div class="flip_container-inner">
-                        <div class="flip_container-front">
-                            <div class="version_container">
-                                <div id='fa-check' class="fas fa-check"></div>
-                                <div class="version"></div>
-                                <span>Bạn đang sử dụng phiên bản <div class="new_or_old"></div></span>
-                            </div>
-                        </div>
-                        <div class="flip_container-back">
-                            <div class="version_more">
-                                <div class="box">
-                                    <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-                                    <!-- Đây là phần hiển thị ảnh -->
-                                    <img class="image" src="https://cdn2.iconfinder.com/data/icons/shopping-online-e-commerce-store/512/tag_label_shopping_free-512.png"></img>
-                                    <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-                                    <span class="title" > <!-- Cái này hiển thị tiêu đề bài viết đó -->
-										Bản cập nhật miễn phí hiện <div id="update"></div> với phiên bản <div id='uVersion'></div>
-									</span>
-                                </div>
-                                <div class="box">
-                                    <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-                                    <!-- Đây là phần hiển thị ảnh -->
-                                    <img class="image" src="https://cdn4.iconfinder.com/data/icons/personal-business-finance-gray-series/64/gray-39-512.png"></img>
-                                    <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-                                    <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-										Bản cập nhật trả phí hiện <div id='pUpdate'></div> với phiên bản <div id='pVersion'></div>
-									</span>
-                                </div>
-                                <div class="box">
-                                    <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-                                    <!-- Đây là phần hiển thị ảnh -->
-                                    <img class="image" src="https://cdn4.iconfinder.com/data/icons/glyph-ui-icons-part-2/22/menu-512.png"></img>
-                                    <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-                                    <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-							Xem thêm tại <a href="https://nullshell.org">nullshell.org</a>
-						</span>
-                                </div>
-                            </div>
-                        </div>
+               <div class="popular_container">
+                    <div class="box">
+                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <span class="title">
+                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+                        </span>
                     </div>
-                </div>
-
-
+                    <div class="box">
+                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <span class="title">
+                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+                        </span>
+                    </div>
+                    <div class="box">
+                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <span class="title">
+                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+                        </span>
+                    </div>
+                    <div class="box">
+                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <span class="title">
+                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+                        </span>
+                    </div>
+                    <div class="box">
+                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <span class="title">
+                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+                        </span>
+                    </div>
+                    <div class="box">
+                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <span class="title">
+                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+                        </span>
+                    </div>
+                    <div class="box">
+                        <img class="image" src="image/category/kalilinux.png"></img>
+                        <span class="title">
+                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
+                        </span>
+                    </div>
+           </div>
             </div>
         </div>
+        <!-- MENU -->
+        <div class="menu">
+            <div class="menu_container">    
+                <span class="starttitle">A</span>
+                <div class="box"> 
+                    <img class="image" src='https://cdn0.iconfinder.com/data/icons/mintab-outline-for-ios-4/30/alarm-clock-timer-time-ring-512.png'></img>
+                    <span class="title">Alarm</span>
+                </div>
+                <span class="starttitle">C</span>
+                <div class="box"> 
+                    <img class="image" src='https://cdn0.iconfinder.com/data/icons/office-2-9/48/81-512.png'></img>
+                    <span class="title">Color</span>
+                </div>
+                <div class="box"> 
+                    <img class="image" src='https://cdn1.iconfinder.com/data/icons/business-and-finance-2-5/130/99-512.png'></img>
+                    <span class="title">Collaboration</span>
+                </div>
+                <div class="box"> 
+                    <img class="image" src='https://cdn1.iconfinder.com/data/icons/network-and-comminications-flat-circle-shadow-vo-1/120/control__data__share__community__social__communication__connect-512.png'></img>
+                    <span class="title">Community</span>
+                </div>
+                <span class="starttitle">D</span>
+                <div class="box"> 
+                    <img class="image" src='https://cdn4.iconfinder.com/data/icons/game-design-flat-icons-2/512/4_magnet_resource_game_design_flat_icon-512.png'></img>
+                    <span class="title">Data Saving Mode</span>
+                </div>
+                <span class="starttitle">F</span>
+                <div class="box"> 
+                    <img class="image" src='https://icon-library.net/images/feedback-icon-vector/feedback-icon-vector-10.jpg'></img>
+                    <span class="title">Feedback</span>
+                </div>
+                <div class="box"> 
+                    <img class="image" src='https://icon-library.net/images/file-explorer-icon/file-explorer-icon-14.jpg'></img>
+                    <span class="title">File Explore</span>
+                </div>
+                <span class="starttitle">L</span>
+                <div class="box"> 
+                    <img class="image" src='https://cdn3.iconfinder.com/data/icons/cosmo-color-documents-2/40/log-512.png'></img>
+                    <span class="title">Log</span>
+                </div>
+                <span class="starttitle">M</span>
+                <div class="box"> 
+                    <img class="image" src='https://cdn0.iconfinder.com/data/icons/music-audio-video-flat-square-rounded-vol-1/150/81__chevron__button__music__player-512.png'></img>
+                    <span class="title">Music Player</span>
+                </div>
+                <span class="starttitle">P</span>
+                <div class="box"> 
+                    <img class="image" src='https://cdn2.iconfinder.com/data/icons/computer-security-1/512/12-128.png'></img>
+                    <span class="title">Policy</span>
+                </div>
+                <span class="starttitle">T</span>
+                <div class="box"> 
+                    <img class="image" src='https://image.flaticon.com/icons/png/128/2008/2008862.png'></img>
+                    <span class="title">Toolkits</span>
+                </div>
 
+            </div>
+            <div class="menu_dash"></div>
+            <div class="right_container">
+                132
+            </div>
+            
+
+        </div>
         <!-- TASKBAR -->
         <div class="taskbar">
             <div class="taskbar_icons">
@@ -225,6 +348,7 @@
             // document.getElementById('broswer').innerHTML = platform.name +' '+ platform.version; // In thông tin trình duyệt người dùng
             //document.getElementById('osSystem').innerHTML = platform.os;
             colorBorder();
+            colorBorderMenu();
             // Hiển thị thông tin internet kết nối client
             internetInfo();
             // Gọi hàm check lỗi
@@ -277,7 +401,9 @@
            		}
                 
 
-           	} )
+           	} );
+           category();
+           window.onload = addIdTitle();
         </script>
 </body>
 

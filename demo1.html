@@ -1,26 +1,118 @@
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <style type="text/css">
-	.demo {
-		width:50px;
-		height: 50px;
-		background-color: green;
-		resize: both;
-		overflow: auto;
-	}
+    .container {
+        position: fixed;
+        left: 50%;
+        height: 90%;
+        transform: translateX(-50%);
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        background-color: red;
+        padding:20px;
+        border-radius: 14px;
+        overflow: auto;
+            box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    }
+    .info {
+        width:95%;
+        list-style:none;
+        display:-webkit-box;
+        display:-moz-box;
+        display:-ms-flexbox;
+        display:-webkit-flex;
+        display:flex;
+        -webkit-flex-flow:row wrap;
+        justify-content:space-around;
+    }
+    .info span {
+        padding: 5px;
+        width:40%;
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        border-radius:5px;
+    }
+    .main_container {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .title {
+
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: bolder;
+        font-size: 25px;
+        border-bottom: solid;
+        padding-bottom: 15px;
+    }
+    .toolkit {
+        display: flex;
+        justify-content: space-between;
+
+    }
+    i {
+        padding: 10px;
+    }
+    .share{
+        background-color: green;
+        margin: 5px;
+        border-radius: 10px;
+    }
+    .social_container {
+        display: flex;
+    }
+    .content {
+        border-radius: 14px;
+        height: 5000px;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+    }
+    .comment {
+        margin-top: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 250px;
+        border: solid;
+        border-radius: 15px;
+    }
 </style>
-
-
-    <div class="row">
-        <div class="twelve columns itemDetails"> 
-            <h3><a href="#">title</a></h3>
-            <p class="quiet" style="font-size: 5px;">submitted by <a href="#">designer</a></p>                   
+    <div class="container">
+        <div class="toolkit">
+            <div>1</div>
+            <div>2</div>
+        </div>
+        <div class="main_container">
+        <div class="title">Hacking với google là một rtong những chiến thuật hacking thượng đẳng nhất</div>
+        <div class="info">
+            <span class="author">Tác giả : Trương Hướng</span>
+            <span class="label">Nhãn : Hacking , Blogger</span>
+            <span class='pub'>Xuất bản : 25/04/2003</span>
+            <span class='update'>cập nhật : 25/04/2003</span>
+            <span class='count'>Số lượng chữ : 12000</span>
+            <span class='music'>Số lượng chữ : 12000</span>
+        </div>
+        <div class="content">
+        </div>
+        <div class="comment">
         </div>
     </div>
-</div>
-<p class="demo">ấd ac ac ac <br/>ác</p>
-<script type="text/javascript">
-var widthArray=$('.row *').map(function(){
-   alert( $(this).css('font-size'));
-}).get();
-</script>
+        <div class="toolkit">
+            <div class="next">
+                <span>Next</span>
+            </div>
+            <div class="social">
+                <div class="social_container">
+                    <div class="share"><i class="fab fa-facebook-square"></i></div>
+                    <div class="share"><i class="fas fa-print"></i></div>
+                </div>
+            </div>
+            <div class="back">
+                <span>Back</span>
+            </div>
+        </div>
+    </div>

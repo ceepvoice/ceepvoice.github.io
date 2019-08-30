@@ -7,6 +7,32 @@ body {
 	width: 100vw;
 	height: 100vh;
 }
+	/* đoạn này cho cái thanh trượt */
+	::-webkit-scrollbar {
+	  display: none
+
+	}
+	:hover::-webkit-scrollbar {
+		display: block;
+	 width: 10px;
+
+	}
+	/* Track */
+	::-webkit-scrollbar-track {
+	  background: #f1f1f1; 
+
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+	  background: #888; 
+	  border-radius: 15px;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+	  background: #555; 
+	}
 /* 2.0: PHẦN CSS CHỨC NĂNG CẤU TRÚC CHUNG */
 	/* 2.1: css cho cái ảnh xong tiêu đề */
 
@@ -80,8 +106,13 @@ body {
 		background-color:#fff;
 		padding: 5px;
 		height: 100%;
-		overflow: hidden;
+		overflow: auto;
 		border-radius: 10px;
+	}
+	.window_name {
+		padding: 5px;
+		font-weight: bolder;
+		text-align: center;	
 	}
 	/* css cho chức năng flip / lật */
 	.flip_container {
@@ -151,16 +182,35 @@ body {
 		display:flex;
 		align-items:center;
 		justify-content:center;
+
 	}
+	@keyframes float {
+		0% {
+			box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+			transform: translatey(0px);
+		}
+		50% {
+			box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+			transform: translatey(-10px);
+		}
+		100% {
+			box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+			transform: translatey(0px);
+		}
+	}
+
+
 	.category_image img {
-		width:100px;
-		height:100px;
-		object-fit:contain;
-		border-style:solid;
-		border-color:#ff0;
-		border-width:5px;
-		border-radius:50%;
+		width: 100px;
+		height: 100px;
+		box-sizing: border-box;
+		border: 5px white solid;
+		border-radius: 50%;
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+		animation: float 6s ease-in-out infinite;
 	}
+	
 	.category_title { /* tiêu đề chử đề */
 		text-align:center;
 		font-size:25px;
@@ -212,6 +262,89 @@ body {
 			}
 
 			/* 4.2.2: Phần css hiển thị menu cửa blog */
+			.starttitle {
+				padding-left: 10px;
+				font-weight: bolder;
+			}
+			.starttitle::after {
+				content: '.'
+			}
+			.menu_container {
+				width: 20vw;
+				display: flex;
+				flex-direction: column;
+				text-align: left;
+				
+				overflow-y: scroll;
+				overflow-x: hidden;
+			}
+			.menu_container .box span {
+				text-align: left;
+				background-color: inherit;
+				  color: black;
+			
+				  width: 100%;
+
+			
+				  text-align: left;
+				  cursor: pointer;
+				  transition: 0.3s;
+				  font-size: 17px;
+			}
+			.right_container {
+				width: 80%;
+			}
+			.menu_dash {
+				border:solid 1px;
+			}
+			.menu{
+				display: flex;
+				position: fixed;
+				flex-direction: row;
+				border:solid 1px;
+				bottom: 100px;
+				height: 70vh;
+				width: 70vw;
+				border-radius: 5px;
+				background-color: #ebe4e4;
+				margin-left: auto;
+				margin-right: auto;
+				z-index: 99999;
+				display: none;
+
+			}
+			.menu_container .box { /* Đoạn css cho các post hiển thị trên chủ đề */
+			margin: 5px;
+			height: 25px;
+			padding-right: 15px;
+			cursor: pointer;
+			}
+			.menu_container .box:hover  {
+			background-color: #9e8a8a;
+			border-radius: 15px;
+			}
+			.menu_container .box:hover .image {
+			background-color: white;
+			}
+			.menu_container .box:active {
+			box-shadow: 0 2px #666;
+			transform: translateY(2px);
+			}
+			.menu_container .box .image {
+			background-color: white;
+			}
+			.menu_container .box img { 
+			width: 25px; 
+			height: 25px;
+			margin-right:5px;
+			border-style:solid;
+			border-width: 2px;
+			padding: 2px;
+			border-radius: 50%;
+			}
+			.menu_container .box .title { 
+			padding-left: 5px;
+			}
 			/* 4.2.3: Phần css hiển thị thông báo / bài viết liên quan */ 
 			/* 4.2.4: Phần css hiển thị số hiệu phiên bản */
 			.version {
@@ -303,23 +436,66 @@ body {
 	left: 50%;
 	transform: translateX(-50%);
 	border-radius: 10px;
-	border:solid 1px red;
-	width: 50%;
-	margin-right: auto;
-	margin-left: auto;
 	position: fixed;
 	z-index: 9999;
-	background-color: #fff;
-
+	
 }
 
 .search_container {
-	padding: 10px;
-	justify-content: space-between;
-	flex-direction: row;
-	display: flex;
+	
+	width: 20vw;
+	border:solid;
+	background-color: #fff;
 }
-.search_custom {
-	width:20%;
-	border: solid;
+
+.search , .search_container , #searchLive{
+	margin-left: auto;
+	margin-right: auto;
+}
+.virtual {
+	display: table;
+	padding: 5px;
+}
+.saltana , form {
+	display: table-cell;
+	vertical-align: middle;
+
+}
+.saltana {
+	padding-right:15px;
+	border-radius: 40%;
+	background-color: black;
+	padding: 2.5px;
+
+}
+.search_span{
+	border:solid red;
+	border-radius: 50%;
+	margin: 2.5px;
+	transform: rotate(90deg);
+	padding: 2.5px;
+}
+.search_here { 
+	padding-left: 10px;
+	width: 100%;
+	overflow-x: scroll;
+	position: relative; 
+	font-size: 16px;
+	border: none;
+	background-repeat:no-repeat;
+	margin-left:5px;
+}
+::placeholder {
+	font-weight: bolder;
+}
+
+.search select {
+	width: 100%;
+	font-weight: bolder;
+	padding: 10px;
+}
+
+.search_title {
+	border-bottom: solid 1px green;
+	padding-bottom: 5px;
 }

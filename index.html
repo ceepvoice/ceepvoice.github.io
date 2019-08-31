@@ -4,7 +4,6 @@
 
 <head>
     <title>NullShell &#128298;</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- GHI IP CỦA CLIENT -->
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -39,9 +38,9 @@
             <div class="saltana">
                 <div class="search_span"><div class="search_span" style="border-radius: 30%;"></div></div>
             </div>
-            <form onsubmit="demo()">
-                <input class="search_here" id='search' type="text" placeholder="Search Here ...">
-            </form>
+           
+            <input class="search_here" id='search' type="text" placeholder="Search Here ...">
+            
         </div>
         <select id='select_label'>
             <option selected="selected">All</option>
@@ -203,7 +202,7 @@
 
                     </div>
                 </div>
-        <div class='window' style="height: 200px;" id='randomPosts'>
+        <div class='window' id='randomPosts'>
          
                 <div class="window_taskbar">
                     <div class="image">
@@ -357,54 +356,21 @@
             $('#internet_ip').html(userip);
             userColor();
 
-            addIdToMove();
-
-            $('.window').each(
-                function() {
-          
-                    dragElement(document.getElementById($(this).attr('id')));
-                    // Hàm chức năng quan trọng khác
-
-			
-                }
-            );
-            $('.window').click(zIndex);
-            // ĐỔI Z-INDEX KHI MOUSE HOLD
-            $('.window').on('mousedown mouseup', zIndex);
-
-
             // CHANGE FONT Size
-           $('.window').mousemove ( function() {
-        		var f = 0;
-           		var a = $(this).attr('data-width'); // Lầy chiều rộng cơ sở ban đầu
-           		var b = $(this).width();  // Lấy chiều rộng sau khi biến đổi
-           		var d = $(this).attr('data-height'); // Lầy chiều dài cơ sở ban đầu
-           		var e = $(this).height();  // Lấy chiều dài sau khi biến đổi
-           		if ( b <= a ){
-	                $(this).find('.window_container *').map(function(){
-						$(this).css('font-size',$(this).attr('data-font-size')) // thêm data font size ban đầu
-	            	}).get();
-	                $(this).css('font-size',$(this).attr('data-font-size'))
-	               
-           		} else {
-           			var f = b/a;
-	                $(this).find('.window_container *').map(function(){
-						$(this).css('font-size',$(this).attr('data-font-size').replace('px','')*f +'px') // thêm data font size ban đầu
-	            	}).get();
-	                $(this).css('font-size',$(this).attr('data-font-size').replace('px','')*f +'px')
-
-           		}
-                
-
-           	} );
+          
            category();
+          
+
            addCloseOpen();
            window.onload = function() { 
                 
                 addIdTitle();
                 colorBorder();
+                loadImage();
+                
             }
-          openOrClose()
+          openOrClose();
+
         </script>
 </body>
 

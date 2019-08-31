@@ -103,118 +103,14 @@ function colorBorderMenu() {
     }
 
 };
-// ============== ĐOẠN CỰC KÌ QUAN TRỌNG 
-// HÀM DÙNG ĐỂ CÓ THẺ DI CHUYỂN CÁC CỬA SỔ TR
-var a = $('.window').width();
-var b = $('.window').height();
-var c = $('.window').css('font-size').replace('px', '');
 
-$('.window').mouseup(change);
-
-function change() {
-    var d = $('.window').width();
-    var e = $('.window').height();
-    if ((0.2 * c * (d / a)) < 16) {
-        var f = 16;
-    } else {
-        var f = 0.2 * c * (d / a)
-    };
-    if (d > a) {
-        $(this).css('font-size', f + "px")
-    }
-
-}
-
-function dragElement(elmnt) {
-    var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-    if (document.getElementById(elmnt.id + "Move")) {
-        /* if present, the header is where you move the DIV from:*/
-        document.getElementById(elmnt.id + "Move").onmousedown = dragMouseDown;
-    } else {
-        /* otherwise, move the DIV from anywhere inside the DIV:*/
-        elmnt.onmousedown = dragMouseDown;
-    }
-
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        maptop = elmnt.offsetTop - pos2;
-        mapleft = elmnt.offsetLeft - pos1;
-        classWindowWidth = $(".window").width(); // Chiều rộng cửa class window viết tắt củ class window width 
-        windowWidth = $(window).width(); // Chiều rộng của cửa sổ window màn hình
-        windowHeight = $(window).height();
-        // set the element's new position:
-        if (maptop < -5) {
-            elmnt.style.top = "-5px";
-        } else {
-            elmnt.style.top = maptop + "px"
-        };
-        if (maptop > windowHeight) {
-            elmnt.style.top = windowHeight - $(".window").width() + "px"
-        }
-        if (mapleft > (windowWidth - 10)) {
-            elmnt.style.left = (windowWidth - (0.1 * classWindowWidth)) + "px";
-        } else if (mapleft > (screen.width - 10)) {
-            elmnt.style.left = (screen.width - (0.1 * classWindowWidth)) + "px";
-        } else {
-            elmnt.style.left = mapleft + "px";
-        };
-        if (mapleft < 10) {
-            elmnt.style.left = 0;
-        }
-
-
-    }
-
-    function closeDragElement() {
-        /* stop moving when mouse button is released:*/
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-};
-// FUNCTION ĐỔI Z-INDEX
-function zIndex() {
-    $(this).siblings('.window').css('z-index', 0);
-    $(this).siblings('.window_container').css('display', 'none');
-    $(this).css('z-index', 11);
-};
-// CÁI NÀY CỰC KÌ QUAN TRỌNG ĐỂ GIÚP CHO HÀM MOVE CÓ THỂ HOẠT ĐỘNG ĐƯỢC
-
-function addIdToMove() {
-
-    var clc = document.getElementsByClassName("window_taskbar");
-    for (n = 0, length = clc.length; n < length; n++) {
-        a = $('.window').eq(n).attr('id')
-        clc[n].id = a+ "Move";
-    };
-};
 // ADD CÁC CHỨC NĂNG ĐÓNG MỞ THU NHỎ CHO CÁC WINDOWS
 function addCloseOpen() {
         $('.window_taskbar').each(
             function() {
                 a = $(this).find('span')
                 b = a.length;
-                c = ['zoomOut', 'zoomInBack', 'zoomOut']
+                c = ['zoomOut', 'zoomIn', 'zoomOut']
                 for (i = 0; i < b; i++)
                     a.eq(i).attr('class', c[i])
 
@@ -223,14 +119,13 @@ function addCloseOpen() {
         $('.zoomOut').click(
             function() {
                 d = $(this).parent().parent().parent();
-                d.css('display', 'none')
+                d.addClass('hidden');
             }
         );
-        $('.zoomInBack').click(
+        $('.zoomIn').click(
             function() {
                 e = $(this).parent().parent().parent()
-                e.css('height', e.attr('data-height') + 'px')
-                e.css('width', e.attr('data-width') + 'px')
+                e.toggleClass('zoom')
             }
         );
         // ké các code add chức năng cho thanh toolbar
@@ -244,10 +139,35 @@ function addCloseOpen() {
     }
     // CÁI NÀY HIỂN THỊ HOẶC ẨN CÁC WINDOW KHI CLICK
 function openOrClose(){
+    $('.taskbar_icons a').each(
+        function(){
+            $('#'+$(this).attr('data-id')).addClass('hidden');
+        })
     $('.taskbar_icons a').click(
         function () {
-         a = $(this).attr('data-id');
-         $('#'+a).toggleClass("hidden")
+        a = $(this).attr('data-id');
+        c = $('#'+a) ;
+        if ( c.hasClass("hidden") ){
+
+            
+            d = $('.window').length;
+            for ( i = 0; i < d; i++){
+                if ( $('.window').eq(i).hasClass('hidden')  ) {
+                    //
+                } else {
+                    $('.window').eq(i).addClass('hidden')
+                }
+            }
+            c.removeClass('hidden');
+        } else {
+            c.addClass('hidden')
+        } 
+
+
+        
+// CÁI NÀY CỰC KÌ QUAN TRỌNG ĐỂ GIÚP CHO HÀM MOVE CÓ THỂ HOẠT ĐỘNG ĐƯỢC
+
+        
         })
 }
 
@@ -343,17 +263,6 @@ function loadImage() {
 
         })
         // display body
-    $('body').removeAttr('style');
-    $('.window').each(function() {
-            $(this).find('.window_container *').map(function() {
-                $(this).attr('data-width', $(this).width()) // thêm data chiều rộng ban đầu
-                $(this).attr('data-height', $(this).height()) // thêm data chiều dài ban đầu
-                $(this).attr('data-font-size', $(this).css('font-size')) // thêm data font size ban đầu
-            }).get();
-            $(this).attr('data-width', $(this).width()) // thêm data chiều rộng ban đầu
-            $(this).attr('data-height', $(this).height()) // thêm data chiều dài ban đầu
-            $(this).attr('data-font-size', $(this).css('font-size'))
-        }) // thêm data font size ban đầu 
-
+         $('body').removeAttr('style');  
 
 }

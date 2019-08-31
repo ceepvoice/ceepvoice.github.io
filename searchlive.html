@@ -99,11 +99,11 @@
 
         for (i=0; i<label.length; i++){
         a =  '<option>'+label[i].term+'</option>' ;
-          $(a).insertAfter ('.option')  
+          $(a).insertAfter ('.option_default')  
         }
 
     }
-    $('input').on('keyup input',function() {
+    $('input').on('input',function() {
         alert ( 'a')
     })
 </script>

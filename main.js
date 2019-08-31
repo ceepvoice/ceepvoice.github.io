@@ -1,5 +1,5 @@
 // CÁC BIẾN ĐẾM QUAN TRỌNG 
-var postNumber = 10; // Đây là số bài viết sẽ hiển thị ở mỗi chủ đề trong trang chủ
+
 var color = ['#FF0000', '#FF3300', '#FFFF00', '#00CC00', '#009999', '#00FFFF', '#9900CC', '#FF0099', '#FF6600', '#CCFF33', '#660000', '#CC0099', '#003300', '#636018', '#002e03', '#9e13b0', '#13b07e', '#9e13b0', '#f06573']; // Đây là các màu sắc mà nó sẽ border hình ảnh cái bài viết hiển thị trên trang chủ
 
 // CÁC BIẾN THIẾT LẬP MÀU SẮC TÙY CHỈNH CHO NGƯỜI DÙNG
@@ -8,9 +8,7 @@ var bloggerUrl = 'https://www.googleapis.com/blogger/v3/blogs/'
 var bloggerApiKey = 'AIzaSyD6l0knzX0Muw_YnhAlwcUSvLyxrqte_Og';
 var blogId = '3672902208348460125';
 var postShow = 5; // <= 10;
-function userColor() {
-    $('.category').css('background-color', categoryColor);
-};
+
 // MỘT SỐ HÀM KIỂM TRA LỖI TRONG TRANG
 
 // Hàm khởi tạo đồng hồ
@@ -34,58 +32,7 @@ function checkTime(i) {
     }
     return i;
 };
-// KIỂM TRA TỐC ĐỘ INTERNET
 
-
-
-online = window.navigator.onLine;
-
-navigator.connection.addEventListener('change', internetInfo);
-
-function internetInfo() {
-    // Network type that browser uses
-    $('#internet_type').html(navigator.connection.type + '');
-    $('#internet_downlinkMax').html(navigator.connection.downlinkMax + ' Mb/s');
-    $('#internet_effectiveType').html(navigator.connection.effectiveType);
-
-    // Xanh nếu save data vàng nếu không save data
-    if (navigator.connection.saveData == false) {
-        $('#internet_saveData').html(navigator.connection.saveData + '');
-        $('#internet_saveData').css('color', '#d15706');
-    } else {
-        $('#internet_saveData').html('<green>' + navigator.connection.saveData + '</green>');
-    };
-    // Vàng và nhấp nháy vàng nếu kết nối dưới 0.5 Mb và xanh nếu kết nối > 1 Mb 
-    if (navigator.connection.downlink <= 0.5) {
-        $('#internet_downlink').html(navigator.connection.downlink + 'Mb/s');
-        $('#internet_downlink').css('color', '#d15706');
-        $("#internet_downlink").addClass("warningFlash");
-    } else if (navigator.connection.downlink >= 1) {
-        $('#internet_downlink').html('<green>' + navigator.connection.downlink + 'Mb/s</green>');
-        $("#internet_downlink").removeClass("warningFlash");
-    } else {
-        $('#internet_downlink').html(navigator.connection.downlink + ' Mb/s');
-        $("#internet_downlink").removeClass("warningFlash");
-    };
-    // Đỏ và nhấp nháy nếu rtt dưới 100ms 
-    if (navigator.connection.rtt > 100) {
-        $('#internet_rtt').html('<red><b>' + navigator.connection.rtt + 'ms</b></red>');
-        $("#internet_rtt").addClass("warningFlash");
-    } else {
-        $('#internet_rtt').html(navigator.connection.rtt + 'ms');
-        $("#internet_rtt").removeClass("warningFlash");
-    };
-    // Đỏ và nhấp nháy biểu tượng internet nếu mất kết nối
-    if (navigator.onLine) {
-        $('#internet_connect').css('color', 'green');
-        $('#internet_connect').html('Connect');
-        $("#internet_connect").removeClass("warningFlash");
-    } else {
-        $('#internet_connect').css('color', 'red');
-        $('#internet_connect').html('Disconnect');
-        $("#internet_connect").addClass("warningFlash");
-    }
-};
 // ĐOẠN JS ĐỂ LÀM MÀU CHO CÁC BÀI VIẾT
 
 function colorBorder() {
@@ -159,15 +106,17 @@ function openOrClose(){
                 }
             }
             c.removeClass('hidden');
+            if ( c.hasClass('menu')){
+
+            } else {
+                if ( $('.menu').hasClass('hidden')) {
+
+                } else { $('.menu').addClass('hidden')}
+            }
         } else {
-            c.addClass('hidden')
-        } 
-
-
-        
-// CÁI NÀY CỰC KÌ QUAN TRỌNG ĐỂ GIÚP CHO HÀM MOVE CÓ THỂ HOẠT ĐỘNG ĐƯỢC
-
-        
+            c.addClass('hidden');
+            c.removeClass('zoom');
+        }       
         })
 }
 
@@ -175,7 +124,7 @@ function openOrClose(){
 // CAÍ NÀY CÓ CHỨC NĂNG THÊM TẤT CẢ CÁC CHỦ ĐỀ THEO NHÃ VÀO BÀI VIẾT
 function category() {
     var label = {
-        'Templates': 'coder.jpg',
+        'Templates': 'https://cdn4.iconfinder.com/data/icons/web-development/512/web_page_website_site_webpage_html_flat_icon_symbol-512.png',
         'Hacking': 'coder.jpg',
         'Blogspot': 'coder.jpg',
         'Linux': 'coder.jpg'

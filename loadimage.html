@@ -1,0 +1,19 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<img data-src="https://thuthuatnhanh.com/wp-content/uploads/2018/07/hinh-nen-4k-anime-chien-binh.jpg">
+<img data-src="#sdgsdfsdf">
+<img data-src="https://i.ytimg.com/vi/diq3Jt8hzHc/hqdefault.jpg">
+<img data-src="https://upload.wikimedia.org/wikipedia/vi/8/81/Nh%C3%A2n_v%E1%BA%ADt_%C4%90%C3%B4r%C3%AAmon_Th%C3%AAm.jpg">
+
+<script>
+
+	$('img').each(function(){
+		var a = $(this).attr('data-src');
+    	$(this).attr('src',a)
+    	$(this).removeAttr('data-src')
+
+	} )
+	$('img').each(function(){ 
+		$(this).one('error', function(){ $(this).removeAttr('src') })
+	 } )
+</script>

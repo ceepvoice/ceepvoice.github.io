@@ -189,6 +189,9 @@ body {
 		display:flex;
 		flex-direction:column;
 		border-radius:5px;
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+		background-color: #d6c7c7
 	}
 	.category_image { /* ảnh chủ đề */
 		display:flex;
@@ -225,14 +228,17 @@ body {
 	
 	.category_title { /* tiêu đề chử đề */
 		text-align:center;
-		font-size:25px;
-		text-decoration-line:underline;
+		font-size:30px;
 		padding-top:5px;
+		font-weight: bolder;
+		color: black;
 	}
 	.category_body { /* nơi hiển thị chính của các bài viết gợi ý*/
 		list-style-type:none;
 		margin:0;
 		padding:0;
+		color: black;
+		text-transform: capitalize;
 	}
 	.category_body li {
 		border-bottom:1px solid #555;
@@ -243,12 +249,12 @@ body {
 		border-bottom:none;
 	}
 	.category_body .box img {
-		width:25px;
-		height:25px;
+		width:30px;
+		height:30px;
 		margin:5px;
-		border-radius:50%;
 		border-style:solid;
-		border-width:5px;
+		border-width:2px;
+		background-color: #fff;
 	}
 	/* ============= 4.2: Phần Css Cho Phần Hiển Thị Các Cửa Sổ Chức Năng ============= */
 			/* 4.2.1: Phần css cửa cửa sổ hiển thị các thành viên của blog */
@@ -321,7 +327,7 @@ body {
 				background-color: #ebe4e4;
 				margin-left: auto;
 				margin-right: auto;
-				z-index: 99999;
+				z-index: 5;
 
 			}
 			.menu_container .box { /* Đoạn css cho các post hiển thị trên chủ đề */
@@ -448,7 +454,7 @@ body {
 	transform: translateX(-50%);
 	border-radius: 10px;
 	position: fixed;
-	z-index: 9999;
+	z-index: 10;
 	
 }
 

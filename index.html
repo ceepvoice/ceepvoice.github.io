@@ -32,7 +32,7 @@
         </div>
     </div>
     <!-- SEARCH BOX -->
-    <div class="search">
+    <div class="search" id='searchBox'>
      <div class="search_container">
         <div class="virtual">
             <div class="saltana">
@@ -83,7 +83,7 @@
 
         <!-- === -->
 
-        <div class='window' style="width: 254px;">
+        <div class='window' style="width: 254px;" id='memberInfo'>
       
                         <div class="window_taskbar">
                             <div class="image">
@@ -139,7 +139,7 @@
             	                </div>
             </div>
         </div>
-                <div class='window' style="height: 200px;">
+                <div class='window' style="height: 200px;" id='versionInfo'>
                  
                         <div class="window_taskbar">
                             <div class="image">
@@ -202,7 +202,7 @@
 
                     </div>
                 </div>
-        <div class='window' style="height: 200px;">
+        <div class='window' style="height: 200px;" id='randomPosts'>
          
                 <div class="window_taskbar">
                     <div class="image">
@@ -266,7 +266,7 @@
             </div>
         </div>
         <!-- MENU -->
-        <div class="menu">
+        <div class="menu" id='menu'>
             <div class="menu_container">    
                 <span class="starttitle">A</span>
                 <div class="box"> 
@@ -360,16 +360,10 @@
 
             $('.window').each(
                 function() {
+          
                     dragElement(document.getElementById($(this).attr('id')));
                     // Hàm chức năng quan trọng khác
-                    $(this).find('.window_container *').map(function(){
-						$(this).attr('data-width',$(this).width()) // thêm data chiều rộng ban đầu
-						$(this).attr('data-height',$(this).height()) // thêm data chiều dài ban đầu
-						$(this).attr('data-font-size',$(this).css('font-size')) // thêm data font size ban đầu
-                	}).get();
-                    $(this).attr('data-width',$(this).width()) // thêm data chiều rộng ban đầu
-					$(this).attr('data-height',$(this).height()) // thêm data chiều dài ban đầu
-					$(this).attr('data-font-size',$(this).css('font-size')) // thêm data font size ban đầu
+
 			
                 }
             );
@@ -403,13 +397,13 @@
 
            	} );
            category();
-           addIdTitle();
+           addCloseOpen();
            window.onload = function() { 
                 
-          
+                addIdTitle();
                 colorBorder();
             }
-          
+          openOrClose()
         </script>
 </body>
 

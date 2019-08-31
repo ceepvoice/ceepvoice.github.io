@@ -37,6 +37,9 @@ body {
 	::-webkit-scrollbar-thumb:hover {
 	  background: #555; 
 	}
+	.hidden {
+		display: none !important;
+	}
 /* 2.0: PHẦN CSS CHỨC NĂNG CẤU TRÚC CHUNG */
 	/* 2.1: css cho cái ảnh xong tiêu đề */
 
@@ -64,6 +67,7 @@ body {
 		right: 5px;
 		top: 50px;
 		border-radius: 10px;
+
 	}
 	.window_taskbar {
 		display: flex;
@@ -208,7 +212,7 @@ body {
 		width: 100px;
 		height: 100px;
 		box-sizing: border-box;
-		border: 5px white solid;
+		border: 2px white solid;
 		border-radius: 50%;
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px);
@@ -314,7 +318,6 @@ body {
 				margin-left: auto;
 				margin-right: auto;
 				z-index: 99999;
-				display: none;
 
 			}
 			.menu_container .box { /* Đoạn css cho các post hiển thị trên chủ đề */

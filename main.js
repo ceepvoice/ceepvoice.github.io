@@ -130,9 +130,9 @@ function dragElement(elmnt) {
         pos2 = 0,
         pos3 = 0,
         pos4 = 0;
-    if (document.getElementById(elmnt.id + "move")) {
+    if (document.getElementById(elmnt.id + "Move")) {
         /* if present, the header is where you move the DIV from:*/
-        document.getElementById(elmnt.id + "move").onmousedown = dragMouseDown;
+        document.getElementById(elmnt.id + "Move").onmousedown = dragMouseDown;
     } else {
         /* otherwise, move the DIV from anywhere inside the DIV:*/
         elmnt.onmousedown = dragMouseDown;
@@ -201,17 +201,58 @@ function zIndex() {
 // CÁI NÀY CỰC KÌ QUAN TRỌNG ĐỂ GIÚP CHO HÀM MOVE CÓ THỂ HOẠT ĐỘNG ĐƯỢC
 
 function addIdToMove() {
-    var cls = document.getElementsByClassName("window");
+
     var clc = document.getElementsByClassName("window_taskbar");
-    for (n = 0, length = cls.length; n < length; n++) {
-        cls[n].id = "window" + (n + 1);
-        clc[n].id = "window" + (n + 1) + "move";
+    for (n = 0, length = clc.length; n < length; n++) {
+        a = $('.window').eq(n).attr('id')
+        clc[n].id = a+ "Move";
     };
 };
+// ADD CÁC CHỨC NĂNG ĐÓNG MỞ THU NHỎ CHO CÁC WINDOWS
+function addCloseOpen() {
+        $('.window_taskbar').each(
+            function() {
+                a = $(this).find('span')
+                b = a.length;
+                c = ['zoomOut', 'zoomInBack', 'zoomOut']
+                for (i = 0; i < b; i++)
+                    a.eq(i).attr('class', c[i])
 
+            }
+        );
+        $('.zoomOut').click(
+            function() {
+                d = $(this).parent().parent().parent();
+                d.css('display', 'none')
+            }
+        );
+        $('.zoomInBack').click(
+            function() {
+                e = $(this).parent().parent().parent()
+                e.css('height', e.attr('data-height') + 'px')
+                e.css('width', e.attr('data-width') + 'px')
+            }
+        );
+        // ké các code add chức năng cho thanh toolbar
+        f = $('.taskbar_icons').find('a');
+        h = f.length;
+        g = ['memberInfo','searchBox','menu','randomPosts','versionInfo'];
+        for ( i =0;i<h;i++){
+            f.eq(i).attr('data-id',g[i])
+        }
+
+    }
+    // CÁI NÀY HIỂN THỊ HOẶC ẨN CÁC WINDOW KHI CLICK
+function openOrClose(){
+    $('.taskbar_icons a').click(
+        function () {
+         a = $(this).attr('data-id');
+         $('#'+a).toggleClass("hidden")
+        })
+}
+
+    
 // CAÍ NÀY CÓ CHỨC NĂNG THÊM TẤT CẢ CÁC CHỦ ĐỀ THEO NHÃ VÀO BÀI VIẾT
-
-
 function category() {
     var label = {
         'Templates': 'coder.jpg',
@@ -242,63 +283,77 @@ function category() {
         $(this).find('.category_image img').attr('data-src', $(this).attr('data-label-image'));
         $(this).find('.category_title span').text($(this).attr('data-label'));
         var a = $(this).attr('data-label');
-        $(this).attr('data-label-json', bloggerUrl + blogId + '/posts?labels=' + a + '&maxResults='+postShow+'&fetchImages=true&fetchBodies=false&fields=items(title,id,images)&key=' + bloggerApiKey)
+        $(this).attr('data-label-json', bloggerUrl + blogId + '/posts?labels=' + a + '&maxResults=' + postShow + '&fetchImages=true&fetchBodies=false&fields=items(title,id,images)&key=' + bloggerApiKey)
     });
 }
 
 
 function addIdTitle() {
-    var a = $(".category").length;
-    for (let i = 0; i < (a + 1); i++) {
-        b = $('.category').eq(i);
-        c = b.attr('data-label-json');
-        $.getJSON(c, function(re) {
-            var d = re.items.length;
-            e = $('.category').eq(i);
-            if (postShow > d) {
+        var a = $(".category").length;
+        for (let i = 0; i < (a + 1); i++) {
+            b = $('.category').eq(i);
+            c = b.attr('data-label-json');
+            $.getJSON(c, function(re) {
+                var d = re.items.length;
+                e = $('.category').eq(i);
+                if (postShow > d) {
 
-                for (i = 0; i < (postShow - d); i++) {
-                    e.find('.box').eq(d + i).empty()
+                    for (i = 0; i < (postShow - d); i++) {
+                        e.find('.box').eq(d + i).empty()
 
-                };
+                    };
 
-            }
+                }
 
-            for (let i = 0; i < postShow; i++) {
-                e.find('.title').eq(i).text(re.items[i].title);
-                e.find('.box').eq(i).attr('data-post-id', re.items[i].id);
-                e.find('.image').eq(i).attr('data-src', re.items[i].images[0].url)
-            }
-            loadImage();
-        })
+                for (let i = 0; i < postShow; i++) {
+                    e.find('.title').eq(i).text(re.items[i].title);
+                    e.find('.box').eq(i).attr('data-post-id', re.items[i].id);
+                    e.find('.image').eq(i).attr('data-src', re.items[i].images[0].url)
+                }
+                loadImage();
+            })
+        }
     }
-}
-// BẮT ĐẦU TẢI VÀ ĐÍNH ẢNH SAU KHI TOÀN BỘ ĐƯỢC LOAD OK
-function loadImage(){
-        // load img form data-src
-        $('img').each(function(){
-            var a = $(this).attr('data-src');
-            $(this).attr('src',a)
-            $(this).removeAttr('data-src')
+    // BẮT ĐẦU TẢI VÀ ĐÍNH ẢNH SAU KHI TOÀN BỘ ĐƯỢC LOAD OK
+function loadImage() {
+    // load img form data-src
+    $('img').each(function() {
+        var a = $(this).attr('data-src');
+        $(this).attr('src', a)
+        $(this).removeAttr('data-src')
 
-        } )
-        $('img').each(function(){ 
-            $(this).one('error', function(){ $(this).removeAttr('src') })
-         } ) 
+    })
+    $('img').each(function() {
+            $(this).one('error', function() {
+                $(this).removeAttr('src')
+            })
+        })
         // load font awesome i 
-         $('i').each(function(){
+    $('i').each(function() {
             var a = $(this).attr('data-class');
-            $(this).attr('class',a)
+            $(this).attr('class', a)
             $(this).removeAttr('data-class')
 
-        } )
-         // load css
-          $('link').each(function(){
+        })
+        // load css
+    $('link').each(function() {
             var a = $(this).attr('data-href');
-            $(this).attr('href',a)
+            $(this).attr('href', a)
             $(this).removeAttr('data-href')
 
-        } )
+        })
         // display body
-        $('body').removeAttr('style')
+    $('body').removeAttr('style');
+    $('.window').each(function() {
+            $(this).find('.window_container *').map(function() {
+                $(this).attr('data-width', $(this).width()) // thêm data chiều rộng ban đầu
+                $(this).attr('data-height', $(this).height()) // thêm data chiều dài ban đầu
+                $(this).attr('data-font-size', $(this).css('font-size')) // thêm data font size ban đầu
+            }).get();
+            $(this).attr('data-width', $(this).width()) // thêm data chiều rộng ban đầu
+            $(this).attr('data-height', $(this).height()) // thêm data chiều dài ban đầu
+            $(this).attr('data-font-size', $(this).css('font-size'))
+        }) // thêm data font size ban đầu 
+
+
 }

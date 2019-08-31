@@ -1,0 +1,111 @@
+ <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<style type="text/css">
+    .search {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    position: fixed;
+    z-index: 10;
+    
+}
+
+.search_container {
+    
+    width: 20vw;
+    border:solid;
+    background-color: #fff;
+}
+
+.search , .search_container , #searchLive{
+    margin-left: auto;
+    margin-right: auto;
+}
+.virtual {
+    display: table;
+    padding: 5px;
+}
+.saltana , form {
+    display: table-cell;
+    vertical-align: middle;
+
+}
+.saltana {
+    padding-right:15px;
+    border-radius: 40%;
+    background-color: black;
+    padding: 2.5px;
+
+}
+.search_span{
+    border:solid red;
+    border-radius: 50%;
+    margin: 2.5px;
+    transform: rotate(90deg);
+    padding: 2.5px;
+}
+.search_here { 
+    padding-left: 10px;
+    width: 100%;
+    overflow-x: scroll;
+    position: relative; 
+    font-size: 16px;
+    border: none;
+    background-repeat:no-repeat;
+    margin-left:5px;
+}
+::placeholder {
+    font-weight: bolder;
+}
+
+.search select {
+    width: 100%;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+.search_title {
+    border-bottom: solid 1px green;
+    padding-bottom: 5px;
+}
+
+</style>
+<div class="search" id='searchBox'>
+     <div class="search_container">
+        <div class="virtual">
+            <div class="saltana">
+                <div class="search_span"><div class="search_span" style="border-radius: 30%;"></div></div>
+            </div>
+           
+            <input class="search_here" id='search' type="text" placeholder="Search Here ...">
+            
+        </div>
+            <div class="options">
+               <select class="select">
+                   <option class="option_default">All</option>
+               </select>
+                
+            </div>
+        </div>
+  
+        <p id='searchLive'></p>
+    </div>
+ <script>
+    function cat(json){ //get categories of blog & sort them
+        var label = json.feed.category;
+
+        for (i=0; i<label.length; i++){
+        a =  '<option>'+label[i].term+'</option>' ;
+          $(a).insertAfter ('.option')  
+        }
+
+    }
+    $('input').on('keyup input',function() {
+        alert ( 'a')
+    })
+</script>
+
+<script src="http://eitvietnam.blogspot.com/feeds/posts/summary?alt=json&max-results=0&callback=cat"></script>

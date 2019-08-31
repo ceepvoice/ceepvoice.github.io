@@ -42,7 +42,7 @@ body {
 
 	}
 	.zoom {
-		transform:scale(2);
+		transform:scale(1.5);
 	}
 /* 2.0: PHẦN CSS CHỨC NĂNG CẤU TRÚC CHUNG */
 	/* 2.1: css cho cái ảnh xong tiêu đề */
@@ -191,7 +191,15 @@ body {
 		border-radius:5px;
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px);
-		background-color: #d6c7c7
+		
+	}
+	.category_body .box:hover {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+		border-radius: 15px;
+	}
+	.category_body .box {
+		width: 100%;
 	}
 	.category_image { /* ảnh chủ đề */
 		display:flex;
@@ -224,6 +232,7 @@ body {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px);
 		animation: float 6s ease-in-out infinite;
+
 	}
 	
 	.category_title { /* tiêu đề chử đề */
@@ -238,7 +247,7 @@ body {
 		margin:0;
 		padding:0;
 		color: black;
-		text-transform: capitalize;
+		text-transform: lowercase;
 	}
 	.category_body li {
 		border-bottom:1px solid #555;
@@ -255,6 +264,7 @@ body {
 		border-style:solid;
 		border-width:2px;
 		background-color: #fff;
+		border-radius: 50%;
 	}
 	/* ============= 4.2: Phần Css Cho Phần Hiển Thị Các Cửa Sổ Chức Năng ============= */
 			/* 4.2.1: Phần css cửa cửa sổ hiển thị các thành viên của blog */

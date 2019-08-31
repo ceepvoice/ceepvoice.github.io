@@ -78,7 +78,7 @@ function addCloseOpen() {
         // ké các code add chức năng cho thanh toolbar
         f = $('.taskbar_icons').find('a');
         h = f.length;
-        g = ['memberInfo','searchBox','menu','randomPosts','versionInfo'];
+        g = ['memberInfo','searchBox','menu','comments','versionInfo'];
         for ( i =0;i<h;i++){
             f.eq(i).attr('data-id',g[i])
         }
@@ -106,6 +106,7 @@ function openOrClose(){
                 }
             }
             c.removeClass('hidden');
+            $('body').css('background-color','rgba(112,81,246,0.3)')
             if ( c.hasClass('menu')){
 
             } else {
@@ -116,6 +117,7 @@ function openOrClose(){
         } else {
             c.addClass('hidden');
             c.removeClass('zoom');
+            $('body').css('background','')
         }       
         })
 }
@@ -127,7 +129,10 @@ function category() {
         'Templates': 'https://cdn4.iconfinder.com/data/icons/web-development/512/web_page_website_site_webpage_html_flat_icon_symbol-512.png',
         'Hacking': 'coder.jpg',
         'Blogspot': 'coder.jpg',
-        'Linux': 'coder.jpg'
+        'Android': 'coder.jpg',
+        'Windows': 'coder.jpg',
+        'Exploit': 'coder.jpg'
+
     }
     a = Object.keys(label).length;
 
@@ -167,9 +172,9 @@ function addIdTitle() {
                 e = $('.category').eq(i);
                 if (postShow > d) {
 
-                    for (i = 0; i < (postShow - d); i++) {
-                        e.find('.box').eq(d + i).empty()
-
+                    for (i = -1; i < ((postShow - d)); i++) {
+                        e.find('.box').eq(d + i).remove()
+                    
                     };
 
                 }

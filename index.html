@@ -4,7 +4,7 @@
 
 <head>
     <title>NullShell &#128298;</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- GHI IP CỦA CLIENT -->
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -34,21 +34,72 @@
     </div>
     <!-- SEARCH BOX -->
     <div class="search" id='searchBox'>
-     <div class="search_container">
-        <div class="virtual">
-            <div class="saltana">
-                <div class="search_span"><div class="search_span" style="border-radius: 30%;"></div></div>
+        <div class="search_container">
+            <div class="search_here">
+                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Microsoft_Cortana_transparent.svg/1200px-Microsoft_Cortana_transparent.svg.png'>
+                <input id='search' type="text" placeholder="Muốn gì sợt nấy !">
             </div>
-           
-            <input class="search_here" id='search' type="text" placeholder="Search Here ...">
-            
+            <div class="options">
+                <select class="select">
+                    <option class="option_default">All</option>
+                </select>
+
+            </div>
         </div>
-        <select id='select_label'>
-            <option selected="selected">All</option>
-        </select>
+        <div class="search_body">
+            <div id="searchInfo">Chào ! Tôi là trợ lí Saltana</div>
+            <div id='searchLive'></div>
         </div>
-        <p id='searchLive'></p>
     </div>
+    <script>
+        function cat(json) { //get categories of blog & sort them
+            var label = json.feed.category;
+
+            for (i = 0; i < label.length; i++) {
+                a = '<option>' + label[i].term + '</option>';
+                $(a).insertAfter('.option_default')
+            }
+
+        }
+        $('#search').on('input', function() {
+            a = $(this).val();
+            if ($('.select').val() == "All") {
+                b = bloggerUrl + blogId + '/posts/search?q=' + a + '&fetchBodies=false&key='+bloggerApiKey;
+            } else {
+                b =bloggerUrl + blogId + '/posts/search?q=label:(' + $('.select').val() + ')+' + a + '&fetchBodies=false&key='+bloggerApiKey;
+            }
+
+            if ($.trim(a) == '') {
+                $('#searchInfo').html('Gợi ý cho lựa chọn: <span>' + $('.select').val() + '</span>')
+            } else {
+                $('#searchInfo').html('Kết quả cho <span> ' + a + '</span> thuộc ' + $('.select').val())
+            }
+
+            $.getJSON(b, function(r) {
+                if (r.hasOwnProperty('items')) {
+                    $('#searchLive').empty();
+                    c = r.items.length;
+                    for (let i = 0; i < c; i++) {
+                        $('#searchLive').append(
+                            "<p><span class='searchNumber'>" + i + '</span>' + r.items[i].title + "</p>"
+                        )
+                    }
+                    colora()
+                } else {
+                    $('#searchLive').empty();
+                }
+
+            })
+        })
+        function colora() {
+            a = $('.searchNumber').length;
+            for (i = 0; i < a; i++) {
+                $('.searchNumber').eq(i).css('border-color', color[i]);
+            }
+        }
+    </script>
+
+    <script src="http://eitvietnam.blogspot.com/feeds/posts/summary?alt=json&max-results=0&callback=cat"></script>
     <!-- MAIN -->
     <div class="main">
         <!-- MAIN CONTAINER -->

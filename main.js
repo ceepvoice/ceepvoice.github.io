@@ -67,6 +67,7 @@ function addCloseOpen() {
             function() {
                 d = $(this).parent().parent().parent();
                 d.addClass('hidden');
+                $('body').css('background','')
             }
         );
         $('.zoomIn').click(
@@ -94,31 +95,22 @@ function openOrClose(){
         function () {
         a = $(this).attr('data-id');
         c = $('#'+a) ;
-        if ( c.hasClass("hidden") ){
-
+        if ( c.hasClass('hidden') ){
             
-            d = $('.window').length;
-            for ( i = 0; i < d; i++){
-                if ( $('.window').eq(i).hasClass('hidden')  ) {
-                    //
+            d = $('.taskbar_icons a') ;
+            e = d.length ;
+            for (i=0;i < e;i++){
+                f = $('#'+$('.taskbar_icons a').eq(i).attr('data-id'))
+                if ( f.hasClass('hidden') ) {
+
                 } else {
-                    $('.window').eq(i).addClass('hidden')
-                }
+                f.addClass('hidden'); }
             }
-            c.removeClass('hidden');
-            $('body').css('background-color','rgba(112,81,246,0.3)')
-            if ( c.hasClass('menu')){
-
-            } else {
-                if ( $('.menu').hasClass('hidden')) {
-
-                } else { $('.menu').addClass('hidden')}
-            }
+            c.removeClass('hidden')
         } else {
-            c.addClass('hidden');
-            c.removeClass('zoom');
-            $('body').css('background','')
-        }       
+            c.addClass('hidden')
+
+        }
         })
 }
 

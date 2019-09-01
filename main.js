@@ -119,11 +119,11 @@ function openOrClose(){
 function category() {
     var label = {
         'Templates': 'https://cdn4.iconfinder.com/data/icons/web-development/512/web_page_website_site_webpage_html_flat_icon_symbol-512.png',
-        'Hacking': 'coder.jpg',
-        'Blogspot': 'coder.jpg',
-        'Android': 'coder.jpg',
-        'Windows': 'coder.jpg',
-        'Exploit': 'coder.jpg'
+        'Hacking': 'https://malwarefox.com/wp-content/uploads/2017/11/hacker-3.png',
+        'Blogspot': 'https://cdn3.iconfinder.com/data/icons/leaf/256/blogger.png',
+        'Android': 'http://www.jrtstudio.com/sites/default/files/ico_android.png',
+        'Windows': 'https://p1.hiclipart.com/preview/859/839/709/simply-styled-icon-set-731-icons-free-desktop-windows-windows-illustration-png-clipart.jpg',
+        'Exploit': 'https://eonit.com/wp-content/uploads/2015/05/VM.png'
 
     }
     a = Object.keys(label).length;
@@ -212,3 +212,45 @@ function loadImage() {
          $('body').removeAttr('style');  
 
 }
+// FUNCTION SEARCH 
+function search() {
+        $('#search').on('input', function() {
+            a = $(this).val();
+            if ($('.select').val() == "All") {
+                b = bloggerUrl + blogId + '/posts/search?q=' + a + '&fetchBodies=false&key='+bloggerApiKey;
+            } else {
+                b =bloggerUrl + blogId + '/posts/search?q=label:(' + $('.select').val() + ')+' + a + '&fetchBodies=false&key='+bloggerApiKey;
+            }
+
+            if ($.trim(a) == '') {
+                $('#searchInfo').html('Gợi ý cho lựa chọn: <span>' + $('.select').val() + '</span>')
+            } else {
+                $('#searchInfo').html('Kết quả cho <span> ' + a + '</span> thuộc ' + $('.select').val())
+            }
+
+            $.getJSON(b, function(r) {
+                if (r.hasOwnProperty('items')) {
+                    $('#searchLive').empty();
+                    c = r.items.length;
+                    for (let i = 0; i < c; i++) {
+                        $('#searchLive').append(
+                            "<p><span class='searchNumber'>" + i + '</span>' + r.items[i].title + "</p>"
+                        )
+                    }
+                    colora()
+                } else {
+                    $('#searchLive').empty();
+                }
+
+            })
+        })
+        function colora() {
+            a = $('.searchNumber').length;
+            for (i = 0; i < a; i++) {
+                $('.searchNumber').eq(i).css('border-color', color[i]);
+            }
+        }
+    }
+
+
+       

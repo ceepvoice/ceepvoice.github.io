@@ -51,55 +51,6 @@
             <div id='searchLive'></div>
         </div>
     </div>
-    <script>
-        function cat(json) { //get categories of blog & sort them
-            var label = json.feed.category;
-
-            for (i = 0; i < label.length; i++) {
-                a = '<option>' + label[i].term + '</option>';
-                $(a).insertAfter('.option_default')
-            }
-
-        }
-        $('#search').on('input', function() {
-            a = $(this).val();
-            if ($('.select').val() == "All") {
-                b = bloggerUrl + blogId + '/posts/search?q=' + a + '&fetchBodies=false&key='+bloggerApiKey;
-            } else {
-                b =bloggerUrl + blogId + '/posts/search?q=label:(' + $('.select').val() + ')+' + a + '&fetchBodies=false&key='+bloggerApiKey;
-            }
-
-            if ($.trim(a) == '') {
-                $('#searchInfo').html('Gợi ý cho lựa chọn: <span>' + $('.select').val() + '</span>')
-            } else {
-                $('#searchInfo').html('Kết quả cho <span> ' + a + '</span> thuộc ' + $('.select').val())
-            }
-
-            $.getJSON(b, function(r) {
-                if (r.hasOwnProperty('items')) {
-                    $('#searchLive').empty();
-                    c = r.items.length;
-                    for (let i = 0; i < c; i++) {
-                        $('#searchLive').append(
-                            "<p><span class='searchNumber'>" + i + '</span>' + r.items[i].title + "</p>"
-                        )
-                    }
-                    colora()
-                } else {
-                    $('#searchLive').empty();
-                }
-
-            })
-        })
-        function colora() {
-            a = $('.searchNumber').length;
-            for (i = 0; i < a; i++) {
-                $('.searchNumber').eq(i).css('border-color', color[i]);
-            }
-        }
-    </script>
-
-    <script src="http://eitvietnam.blogspot.com/feeds/posts/summary?alt=json&max-results=0&callback=cat"></script>
     <!-- MAIN -->
     <div class="main">
         <!-- MAIN CONTAINER -->
@@ -191,7 +142,7 @@
             	                </div>
             </div>
         </div>
-                <div class='window' style="height: 200px;" id='versionInfo'>
+                <div class='window' id='versionInfo'>
                  
                         <div class="window_taskbar">
                             <div class="image">
@@ -207,51 +158,17 @@
                             </div>
                         </div>
                 
-                    <div class='window_container'>
-                        <div class="flip_container">
-                            <div class="flip_container-inner">
-                                <div class="flip_container-front">
-                                    <div class="version_container">
-                                        <div id='fa-check' class="fas fa-check"></div>
-                                        <div class="version"></div>
-                                        <span>Bạn đang sử dụng phiên bản <div class="new_or_old"></div></span>
-                                    </div>
+                        <div class='window_container'>
+                            <div class="version_container">
+                                <div id='fa-check'>
+                                    <i data-class="fas fa-check"></i>
                                 </div>
-                                <div class="flip_container-back">
-                                    <div class="version_more">
-                                        <div class="box">
-                                            <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-                                            <!-- Đây là phần hiển thị ảnh -->
-                                            <img class="image" data-src="https://cdn2.iconfinder.com/data/icons/shopping-online-e-commerce-store/512/tag_label_shopping_free-512.png"></img>
-                                            <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-                                            <span class="title" > <!-- Cái này hiển thị tiêu đề bài viết đó -->
-                                                Bản cập nhật miễn phí hiện <div id="update"></div> với phiên bản <div id='uVersion'></div>
-                                            </span>
-                                        </div>
-                                        <div class="box">
-                                            <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-                                            <!-- Đây là phần hiển thị ảnh -->
-                                            <img class="image" data-src="https://cdn4.iconfinder.com/data/icons/personal-business-finance-gray-series/64/gray-39-512.png"></img>
-                                            <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-                                            <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-                                                Bản cập nhật trả phí hiện <div id='pUpdate'></div> với phiên bản <div id='pVersion'></div>
-                                            </span>
-                                        </div>
-                                        <div class="box">
-                                            <!-- Đây là phần hiển thị các bài viết để người dùng chọn -->
-                                            <!-- Đây là phần hiển thị ảnh -->
-                                            <img class="image" data-src="https://cdn4.iconfinder.com/data/icons/glyph-ui-icons-part-2/22/menu-512.png"></img>
-                                            <!-- Cái này dùng hiển thị thông tin về bài viết đó -->
-                                            <span class="title"> <!-- Cái này hiển thị tiêu đề bài viết đó -->
-                                    Xem thêm tại <a href="https://nullshell.org">nullshell.org</a>
-                                </span>
-                                        </div>
-                                    </div>
+                                <div class="version">
+                                    <span id='versionNumber'>1.0.1</span>
+                                    <span>Bạn đang sử dụng phiên bản</span>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
         <div class='window' id='comments'>
@@ -271,50 +188,9 @@
                 </div>
         
             <div class='window_container'>
-               <div class="popular_container">
-                    <div class="box">
-                        <img class="image" data-src="image/category/kalilinux.png"></img>
-                        <span class="title">
-                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-                        </span>
-                    </div>
-                    <div class="box">
-                        <img class="image" data-src="image/category/kalilinux.png"></img>
-                        <span class="title">
-                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-                        </span>
-                    </div>
-                    <div class="box">
-                        <img class="image" data-src="image/category/kalilinux.png"></img>
-                        <span class="title">
-                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-                        </span>
-                    </div>
-                    <div class="box">
-                        <img class="image" data-src="image/category/kalilinux.png"></img>
-                        <span class="title">
-                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-                        </span>
-                    </div>
-                    <div class="box">
-                        <img class="image" data-src="image/category/kalilinux.png"></img>
-                        <span class="title">
-                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-                        </span>
-                    </div>
-                    <div class="box">
-                        <img class="image" data-src="image/category/kalilinux.png"></img>
-                        <span class="title">
-                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-                        </span>
-                    </div>
-                    <div class="box">
-                        <img class="image" data-src="image/category/kalilinux.png"></img>
-                        <span class="title">
-                        Hướng dẫn sử dụng kali linux để tấn công từ chối dịch vụ trang web với step by step
-                        </span>
-                    </div>
-           </div>
+               <div class="comments_container">
+                    ád
+                </div>
             </div>
         </div>
         <!-- MENU -->
@@ -415,12 +291,42 @@
                 
                 addIdTitle();
                 colorBorder();
-                loadImage();
-                
+                setTimeout(function(){ loadImage(); }, 1000);
+                search();
+                setTimeout(function(){ var s = document.createElement( 'script' );
+  s.setAttribute( 'src', 'http://eitvietnam.blogspot.com/feeds/posts/summary?alt=json&max-results=0&callback=cat' );
+  document.body.appendChild( s ) },2000)
+
             }
           openOrClose();
 
+        
+
+          
+        setTimeout(function(){ loadImage(); }, 5000);
+
+
+
+
+        function cat(json) { //get categories of blog & sort them
+            var label = json.feed.category;
+            for (i = 0; i < label.length; i++) {
+                a = '<option>' + label[i].term + '</option>';
+                $(a).insertAfter('.option_default')
+            }
+
+        }
+  
+        // nếu bạn muốn chỉ liệt kê duy nhất các nhãn sau đây sẽ có trong tìm kiếm 
+        /* 
+        function () {
+        var label = ['label1','label2','label3']
+        for (i=0 ; i < label.length ; i++){
+             a = '<option>' + label[i] + '</option>';
+            $(a).insertAfter('.option_default')
+        } } */
         </script>
+    
 </body>
 
 </html>

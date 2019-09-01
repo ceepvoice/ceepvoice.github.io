@@ -64,12 +64,14 @@ body {
 		background-color:#e3d5d5;
 		display: flex;
 		flex-direction: column;
-		width: 350px;
+		width: auto;
 		position: fixed;
 		margin-left: auto;
 		margin-right: auto;
 		top:20%;
+		left: 50%;
 		border-radius: 10px;
+		transform:translate(-50%,-50%);
 	
 
 	}
@@ -126,35 +128,6 @@ body {
 		font-weight: bolder;
 		text-align: center;	
 	}
-	/* css cho chức năng flip / lật */
-	.flip_container {
-		overflow: hidden;
-		height: auto;
-	}
-	.flip_container-inner {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		text-align: center;
-		transition: transform 0.6s;
-		transform-style: preserve-3d;
-	}
-	.flip_container:hover .flip_container-inner {
-		transform: rotateY(180deg);
-	}
-	.flip_container-front, .flip_container-back {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		backface-visibility: hidden;
-	}
-	.flip_container-back {
-		transform: rotateY(180deg);
-	}
-	/* 2.3 copyright */
-	.copyright img {
-		border-radius: 50%;
-	}
 /* 3.0: PHẦN CSS CHO PHẦN TÌM KIẾM */
 
 /* 4.0: PHẦN CSS CHO PHẦN HIỂN THỊ DANH SÁCH BÀI ĐĂNG CŨNG NHƯ CÁC CỬA SỔ WINDOW CHỨC NĂNG */
@@ -187,16 +160,17 @@ body {
 		margin-top:10px;
 		color:#fff;
 		display:flex;
+		border: solid #bfb6b6;
 		flex-direction:column;
 		border-radius:5px;
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px);
 		
+		
 	}
 	.category:hover { 
 		box-shadow: 0 15px 25px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px); 
-	
 		}
 	.category_body .box:hover {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
@@ -238,9 +212,10 @@ body {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px);
 		animation: float 6s ease-in-out infinite;
-
+		border: solid black;
+		background-color: white;
+		
 	}
-	
 	.category_title { /* tiêu đề chử đề */
 		text-align:center;
 		font-size:30px;
@@ -254,6 +229,15 @@ body {
 		padding:0;
 		color: black;
 		text-transform: lowercase;
+	}
+	.category_body .image {
+		-webkit-transition: -webkit-transform .8s ease-in-out;
+          transition:         transform .8s ease-in-out;
+	}
+	.category_body .box:hover .image{
+
+		-webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 	}
 	.category_body li {
 		border-bottom:1px solid #555;
@@ -338,12 +322,17 @@ body {
 				border:solid 1px;
 				bottom: 80px;
 				top:5px;
+				margin-left: auto;
+				margin-right: auto;
 				width: 70vw;
 				border-radius: 5px;
 				background-color: #ebe4e4;
 				margin-left: auto;
 				margin-right: auto;
 				z-index: 5;
+				left: 50%;
+				transform: translateX(-50%);
+				position: fixed;
 
 			}
 			.menu_container .box { /* Đoạn css cho các post hiển thị trên chủ đề */
@@ -381,33 +370,31 @@ body {
 			/* 4.2.3: Phần css hiển thị thông báo / bài viết liên quan */ 
 			/* 4.2.4: Phần css hiển thị số hiệu phiên bản */
 			.version {
-			    border-radius: 50%;
-			    display: flex;
-			    margin-left: auto;
-			    margin-right: auto;
-			    flex-direction: column;
+			   text-align: center;
+			   width: 100%;
+			   display: flex;
+			   flex-direction: column;
 			}
 			.version_container * {
 			    margin-top: 5px;
 			}
-			.version_more {
-			    text-align: left;
-			}
-			.version_more .box{
-				margin-right: auto;
-				margin-left: auto;
-				width: 80%;
-				border-bottom: solid 2px #c2b4b4;
-			}
-			.version_more .box .title {
-				width: 100%;
+			#versionNumber {
+				font-weight: bolder;
+				font-size: x-large;
 			}
 			#fa-check {
-			    font-size: 50px;
 			    background-color: red;
-			    padding: 15px;
+			    width: 45px;
+			    height: 45px;
+			    margin-left: auto;
+			    margin-right: auto;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center; 
+			    padding: 5px;
 			    border-radius: 50%;
 			}
+
 /* 5.0 PHẦN CSS CHO PHẦN HIỂN THỊ BÀI ĐĂNG */
 
 /* 6.0 PHẦN CSS CHO PHẦN TASKBAR */

@@ -1,26 +1,10 @@
-<div class="col">clone me...</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<input class='input1'>
 <script>
-$(document).ready(function() {
-
-	 var label = {
-        'Kali Linux':'coder.jpg',
-        'Hacking':'coder.jpg',
-        'Blogspot':'coder.jpg',
-        'Blogspt':'coder.jpg'
-    }
-    a = Object.keys(label).length ;
-
-    var e = $('.col');
-    for (var i = 0; i < a; i++) {
-      e.clone().insertAfter(e);
-    }
-    for (i=0;i<a;i++){
-    	$('.category').each(function(){
-    		$(this).addClass('class'+i)
-    	})
+$(document).keyup(function(event) {
+    if ($(".input1").is(":focus") && event.key == "Enter") {
+        alert('a')
     }
 });
-   
-    
 </script>

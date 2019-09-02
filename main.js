@@ -53,11 +53,11 @@ function colorBorderMenu() {
 
 // ADD CÁC CHỨC NĂNG ĐÓNG MỞ THU NHỎ CHO CÁC WINDOWS
 function addCloseOpen() {
-        $('.window_taskbar').each(
+        $('.window_header').each(
             function() {
                 a = $(this).find('span')
                 b = a.length;
-                c = ['zoomOut', 'zoomIn', 'zoomOut']
+                c = [ 'zoomIn','zoomOut']
                 for (i = 0; i < b; i++)
                     a.eq(i).attr('class', c[i])
 
@@ -65,14 +65,14 @@ function addCloseOpen() {
         );
         $('.zoomOut').click(
             function() {
-                d = $(this).parent().parent().parent();
+                d = $(this).parent().parent().parent().parent();
                 d.addClass('hidden');
                 $('body').css('background','')
             }
         );
         $('.zoomIn').click(
             function() {
-                e = $(this).parent().parent().parent()
+                e = $(this).parent().parent().parent().parent()
                 e.toggleClass('zoom')
             }
         );
@@ -95,21 +95,35 @@ function openOrClose(){
         function () {
         a = $(this).attr('data-id');
         c = $('#'+a) ;
+        d = $('.taskbar_icons a') ;
+            e = d.length ;
         if ( c.hasClass('hidden') ){
             
-            d = $('.taskbar_icons a') ;
-            e = d.length ;
+            
             for (i=0;i < e;i++){
                 f = $('#'+$('.taskbar_icons a').eq(i).attr('data-id'))
                 if ( f.hasClass('hidden') ) {
 
                 } else {
-                f.addClass('hidden'); }
+                f.addClass('hidden');
+                for (i=0;i < e;i++){
+                f = $('#'+$('.taskbar_icons a').eq(i).attr('data-id'))
+                if ( f.hasClass('zoom') ) {
+                    f.removeClass('zoom')
+                } 
+            }
+             }
             }
             c.removeClass('hidden')
         } else {
-            c.addClass('hidden')
-
+            c.addClass('hidden');
+            c.removeClass('zoom')
+            for (i=0;i < e;i++){
+                f = $('#'+$('.taskbar_icons a').eq(i).attr('data-id'))
+                if ( f.hasClass('zoom') ) {
+                    f.removeClass('zoom')
+                } 
+            }
         }
         })
 }
